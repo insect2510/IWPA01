@@ -30,12 +30,6 @@ async function loadData() {
       return myArr
     }
     else {
-      //auslesen der Tabellenköpfe aus dem 1. Json Objekt
-      //tableHead[0] = myArr[0].unternehmen;
-      //tableHead[1] = myArr[0].land;
-      //tableHead[2] = myArr[0].verbrauch;
-      // 1. Objekt aus dem Arry löschen und alle anderen Objekte nach vorn schieben
-      //myArr.shift();
       myArrLenght = myArr.length;
       getTotalEmission(myArr);
       writeHtmlTable(myArr)
