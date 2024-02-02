@@ -8,40 +8,14 @@ let dir = 0, column = 0, totalEmission, myArr, myArrLenght, ratioText, ratioNumb
 let tableHead = ["Company", "Country", "Emission", "Ratio in %"];
 let searchFor = tableHead[0];
 
+writeHtmlFilter();
+
 try {
   loadData();
 
 } catch (error) {
   document.getElementById("jsTableDom").innerHTML = "Error loading data. Please try again later. A"
 
-}
-
-// Sonderzeichnen aus den Array Textdaten entfernen damit kein Code aus den geladenen Daten eingeschleußt werden kann
-function onlyText(myObj) {
-  for (i = 0; i < myObj.length; i++) {
-    myObj[i].unternehmen = myObj[i].unternehmen.replace(/(<|>|!|§|$|%)/g, "");
-    myObj[i].land = myObj[i].land.replace(/(<|>|!|§|$|%)/g, "");
-
-  }
-  return myObj
-}
-
-// prüfen ob die Werte für die Emission jedes Unternehmens eine Zahl ist
-function isEmissionNumber(myArr) {
-  let emissionNotValid;
-  i = 1;
-  while (i < myArr.length) {
-
-    if (isNaN(myArr[i].verbrauch)) {
-      emissionNotValid = 1;
-      break;
-    }
-    else {
-      emissionNotValid = 0;
-      i++;
-    }
-  }
-  return emissionNotValid
 }
 
 // JSON Daten für die Tabelle laden
@@ -64,8 +38,6 @@ async function loadData() {
       //myArr.shift();
       myArrLenght = myArr.length;
       getTotalEmission(myArr);
-      searchFor = tableHead[0];
-      writeHtmlFilter();
       writeHtmlTable(myArr)
       return myArr;
     }
@@ -75,6 +47,36 @@ async function loadData() {
     document.getElementById("jsTableDom").innerText = "Error loading data. Please try again later.";
   }
 }
+
+// Sonderzeichnen aus den Array Textdaten entfernen damit kein Code aus den geladenen Daten eingeschleußt werden kann
+function onlyText(myObj) {
+  for (i = 0; i < myObj.length; i++) {
+    myObj[i].unternehmen = myObj[i].unternehmen.replace(/(<|>|!|§|$|%)/g, "");
+    myObj[i].land = myObj[i].land.replace(/(<|>|!|§|$|%)/g, "");
+
+  }
+  return myObj
+}
+
+// prüfen ob die Werte für die Emission jedes Unternehmens eine Zahl ist
+function isEmissionNumber(myArr) {
+  let emissionNotValid;
+  i = 0;
+  while (i < myArr.length) {
+
+    if (isNaN(myArr[i].verbrauch)) {
+      emissionNotValid = 1;
+      break;
+    }
+    else {
+      emissionNotValid = 0;
+      i++;
+    }
+  }
+  return emissionNotValid
+}
+
+
 
 // HTML für Filter erzeugen
 function writeHtmlFilter() {
@@ -137,7 +139,6 @@ function myFilter(column) {
   input = document.getElementById("myFilter");
 
   filter = input.value.toUpperCase();
-  console.log(filter)
   table = document.getElementById("javaTable");
   tr = table.getElementsByTagName("tr");
   tableLenght = myArr.length;
