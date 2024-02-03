@@ -76,7 +76,7 @@ function isEmissionNumber(myArr) {
 function writeHtmlFilter() {
   let text1 = "";
   // erzeugt Filter Button
-  text1 += "<input class='me-3 p-2 mb-3' type='text' id='myFilter' onkeyup='myFilter(" + column + ")' placeholder='Search for " + searchFor + "'...' title='Type in a " + searchFor + "'>";
+  text1 += "<input class='me-3 p-2 mb-3' type='text' id='myFilter' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
   text1 += "<div class='btn-group me-3'>";
   for (h = 0; h < (tableHead.length - 2); h++) {
     text1 += "<button type='button' class='" + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
@@ -131,8 +131,8 @@ function myFilter(column) {
 
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myFilter");
-
   filter = input.value.toUpperCase();
+  console.log(filter);
   table = document.getElementById("javaTable");
   tr = table.getElementsByTagName("tr");
   tableLenght = myArr.length;
