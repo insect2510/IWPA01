@@ -2,11 +2,13 @@
 let arrowCss = ["bi bi-sort-alpha-down", "bi bi-sort-alpha-up-alt", "bi bi-sort-numeric-down", "bi bi-sort-numeric-up-alt"];
 let arrow = [arrowCss[0], arrowCss[0], arrowCss[2]];
 let btnActiveCss = "btn btn-success", btnInactiveCss = "btn btn-light";
-let buttonColor = [btnInactiveCss, btnInactiveCss, btnInactiveCss];
+let iconColor = [btnInactiveCss, btnInactiveCss, btnInactiveCss];
 let filterButtonColor = [btnActiveCss, btnInactiveCss];
-let dir = 0, column = 0, totalEmission, myArr, myArrLenght, ratioText, ratioNumber, tableLenght;
+let dir = 0, column = 0, totalEmission, myArr, myArrLenght, tableLenght;
 let tableHead = ["Company", "Country", "Emission", "Ratio in %"];
 let searchFor = tableHead[0];
+let htmlFilter = "";
+let htmlTable = "";
 
 writeHtmlFilter();
 
@@ -74,57 +76,55 @@ function isEmissionNumber(myArr) {
 
 // HTML für Filter erzeugen
 function writeHtmlFilter() {
-  let text1 = "";
   // erzeugt Filter Button
-  text1 += "<input class='me-3 p-2 mb-3' type='text' id='myFilter' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
-  text1 += "<div class='btn-group me-3'>";
+ htmlFilter = "<input style='max-width: 200px;' class='me-3 p-2 mb-3' type='text' id='myFilter' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
+ htmlFilter += "<div class='btn-group me-0'>";
   for (h = 0; h < (tableHead.length - 2); h++) {
-    text1 += "<button type='button' class='" + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
-    text1 += "</button>";
+   htmlFilter += "<button type='button' class='" + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
+   htmlFilter += "</button>";
   }
-  text1 += "</div>";
-  document.getElementById("jsFilter").innerHTML = text1;
+ htmlFilter += "</div>";
+  document.getElementById("jsFilter").innerHTML = htmlFilter;
 }
 
 // HTML für Tabelle aus Array erzeugen
 function writeHtmlTable(myArr) {
   let x = 0;
-  let text2 = "";
 
   // Tabelle anlegen
-  text2 += "<table class='table table-hover table-light' id='javaTable'>";
-  text2 += "<tr class='table-dark'>";
+  htmlTable = "<table class='table table-hover table-light' id='javaTable'>";
+  htmlTable += "<tr class='table-dark'>";
 
   // Tabellenkopf erzeugen
   for (x = 0; x < tableHead.length - 1; x++) {
-    text2 += "<th class='px-2 py-3 align-top w-25";
+    htmlTable += "<th class='px-2 py-3 align-top w-25";
     if (x == 2) {
-      text2 += " text-end";
+      htmlTable += " text-end";
     };
-    text2 += "'>" + tableHead[x];
-    text2 += "<button type='button' class='" + buttonColor[x] + " ms-2 px-2' onclick='mySort(myArr, " + (x + 1) + ")'>";
-    text2 += "<span class='" + arrow[x] + " aria-hidden='true'></span></button></th>";
+    htmlTable += "'><div class='d-inline-flex flex-column flex-md-row'><div class='align-self-center'>" + tableHead[x];
+    htmlTable += "</div><div><button type='button' class='" + iconColor[x] + " ms-0 ms-md-2 px-2' onclick='mySort(myArr, " + (x + 1) + ")'>";
+    htmlTable += "<span class='" + arrow[x] + " aria-hidden='true'></span></button></div></th>";
   }
-  text2 += "<th class='px-2 text-end align-middle'><div>" + tableHead[3] + "</div></th>";
-  text2 += "</tr>";
+  htmlTable += "<th class='px-2 py-3 py-md-4 text-end align-top align-md-middle'><div>" + tableHead[3] + "</div></div></th>";
+  htmlTable += "</tr>";
 
   // Array auslesen und Tabellenfelder erzeugen
   for (x = 0; x < myArr.length; x++) {
-    text2 += "<tr><td class='px-2 py-3 w-25'>" + myArr[x].unternehmen + "</td>"
-    text2 += "<td class='px-2 py-3 w-25'>" + myArr[x].land + "</td>"
-    text2 += "<td class='px-2 py-3 text-end w-25'>" + myArr[x].verbrauch + "</td>";
-    //Anteil eines Landes an der gesamten Emission berechnen und als Text mit 2 Stellen nach Komma umwandeln
-    ratioText = (myArr[x].verbrauch / totalEmission * 100).toFixed(2);
-    text2 += "<td class='px-2 py-3 text-end w-25'>" + ratioText + "</td></tr>";
+    htmlTable += "<tr><td class='px-2 py-3 w-25'>" + myArr[x].unternehmen + "</td>"
+    htmlTable += "<td class='px-2 py-3 w-25'>" + myArr[x].land + "</td>"
+    htmlTable += "<td class='px-2 py-3 text-end w-25'>" + myArr[x].verbrauch + "</td>";
+    //Anteil eines Landes an der gesamten Emission berechnen und mit 2 Stellen nach Komma umwandeln
+    ratioEmission = (myArr[x].verbrauch / totalEmission * 100).toFixed(2);
+    htmlTable += "<td class='px-2 py-3 text-end w-25'>" + ratioEmission + "</td></tr>";
 
   }
 
   // Zeile für keine Einträge vorhanden erzeugen und ausblenden
-  text2 += "<tr style='display: none'><td class='p-3'><em>no entries</em></td><td class='p-3'> </td><td class='p-3'> </td><td class='p-3'> </td></tr>";
+  htmlTable += "<tr style='display: none'><td class='p-3'><em>no entries</em></td><td class='p-3'> </td><td class='p-3'> </td><td class='p-3'> </td></tr>";
   // Tabelle schließen
-  text2 += "</table>";
+  htmlTable += "</table>";
   // erzeugtes HTML im DOM aktuallisieren
-  document.getElementById("jsTableDom").innerHTML = text2;
+  document.getElementById("jsTableDom").innerHTML = htmlTable;
 };
 
 function myFilter(column) {
@@ -165,7 +165,7 @@ function changeFilterButton(button) {
     searchFor = tableHead[0];
     column = 0;
     writeHtmlFilter();
-    //writeHtmlTable(myArr);
+    writeHtmlTable(myArr);
   }
   else {
     filterButtonColor[0] = btnInactiveCss;
@@ -173,7 +173,7 @@ function changeFilterButton(button) {
     searchFor = tableHead[1];
     column = 1;
     writeHtmlFilter();
-    //writeHtmlTable(myArr);
+    writeHtmlTable(myArr);
   }
 }
 
@@ -192,7 +192,7 @@ function mySort(myArr2, spalte) {
   if (dir == 0 && spalte == 1) {
     dir = !dir;
     arrow[0] = arrowCss[0];
-    buttonColor = [btnActiveCss, btnInactiveCss, btnInactiveCss];
+    iconColor = [btnActiveCss, btnInactiveCss, btnInactiveCss];
     myArr2.sort(function (a, b) {
       let x = a.unternehmen.toLowerCase();
       let y = b.unternehmen.toLowerCase();
@@ -205,7 +205,7 @@ function mySort(myArr2, spalte) {
   else if (dir == 1 && spalte == 1) {
     arrow[0] = arrowCss[1];
     dir = !dir;
-    buttonColor = [btnActiveCss, btnInactiveCss, btnInactiveCss];
+    iconColor = [btnActiveCss, btnInactiveCss, btnInactiveCss];
     myArr.sort(function (a, b) {
       let x = a.unternehmen.toLowerCase();
       let y = b.unternehmen.toLowerCase();
@@ -218,7 +218,7 @@ function mySort(myArr2, spalte) {
   else if (dir == 0 && spalte == 2) {
     arrow[1] = arrowCss[0];
     dir = !dir;
-    buttonColor = [btnInactiveCss, btnActiveCss, btnInactiveCss];
+    iconColor = [btnInactiveCss, btnActiveCss, btnInactiveCss];
     myArr2.sort(function (a, b) {
       let x = a.land.toLowerCase();
       let y = b.land.toLowerCase();
@@ -231,7 +231,7 @@ function mySort(myArr2, spalte) {
   else if (dir == 1 && spalte == 2) {
     arrow[1] = arrowCss[1];
     dir = !dir;
-    buttonColor = [btnInactiveCss, btnActiveCss, btnInactiveCss];
+    iconColor = [btnInactiveCss, btnActiveCss, btnInactiveCss];
     myArr2.sort(function (a, b) {
       let x = a.land.toLowerCase();
       let y = b.land.toLowerCase();
@@ -244,7 +244,7 @@ function mySort(myArr2, spalte) {
   else if (dir == 0 && spalte == 3) {
     arrow[2] = arrowCss[2];
     dir = !dir;
-    buttonColor = [btnInactiveCss, btnInactiveCss, btnActiveCss];
+    iconColor = [btnInactiveCss, btnInactiveCss, btnActiveCss];
     myArr2.sort(function (a, b) {
       let x = Number(a.verbrauch);
       let y = Number(b.verbrauch);
@@ -257,7 +257,7 @@ function mySort(myArr2, spalte) {
   else if (dir == 1 && spalte == 3) {
     arrow[2] = arrowCss[3];
     dir = !dir;
-    buttonColor = [btnInactiveCss, btnInactiveCss, btnActiveCss];
+    iconColor = [btnInactiveCss, btnInactiveCss, btnActiveCss];
     myArr2.sort(function (a, b) {
       let x = Number(a.verbrauch);
       let y = Number(b.verbrauch);
@@ -269,4 +269,21 @@ function mySort(myArr2, spalte) {
 
   writeHtmlTable(myArr2);
   return myArr2;
+}
+
+function setLanguage(language) {
+if (language == 0) {
+  document.getElementById("hauptnavigation").style = "float: left;";
+  document.getElementById("langEn").style = "color: #fff;";
+  document.getElementById("langHe").style = "color: #999;";
+
+}
+else {
+  document.getElementById("hauptnavigation").style = "float: right;";
+  document.getElementById("langEn").style = "color: #999;";
+  document.getElementById("langHe").style = "color: #fff;";
+
+
+}
+
 }

@@ -7,55 +7,62 @@
   <title>Carbon Emissions Worldwide</title>
   <link rel="icon" type="image/x-icon" href="img/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <link href=" https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css " rel="stylesheet">
   <link rel="stylesheet" href="carbon.css">
 </head>
 
 <body class="bg-dark">
   <!-- Header Menü -->
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark py-3 fixed-top">
-    <div class="container-fluid" style="max-width: 1000px;">
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark py-3 fixed-top">
+    <div class="container-fluid" style="max-width: 1136px;">
       <a class="navbar-brand" href="#"><img src="img/carbon-logo.jpg" style="width:40px"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="mynavbar">
+      <div class="collapse navbar-collapse justify-content-center-md" id="mynavbar">
 
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item pe-3">
-            <a class="nav-link text-uppercase" href="#">Climate Change</a>
+        <ul class="navbar-nav me-auto pt-2 text-uppercase" data-bs-theme="dark">
+          <li class="nav-item px-3 pt-1 p-md-1">
+            <a class="nav-link active" href="#">Emissons</a>
           </li>
-          <li class="nav-item pe-3">
-            <a class="nav-link text-uppercase" href="#">Clean Energy</a>
+          <li class="nav-item px-3 py-2 p-md-1">
+            <a class="nav-link" href="#">Climate Change</a>
           </li>
-          <li class="nav-item pe-3">
-            <a class="nav-link text-uppercase" href="#">About Us</a>
+          <li class="nav-item px-3 py-2 p-md-1">
+            <a class="nav-link" href="#">Clean Energy</a>
           </li>
-
         </ul>
 
-        <form class="btn-group border-1">
+        <form class="btn-group border-1 px-3 py-4 p-md-1">
           <input class="p-1" type="text" placeholder="Search" style="max-width: 200px;">
           <i class="btn btn-dark bi-search px-2 rounded-0 border-1" type="button"></i>
         </form>
+        <div class="btn-group me-2" role="group" data-bs-theme="dark" id="lang">
+          <button type="button" class="my-1 p-1 border-0" style="color: #fff;" id="langEn" onclick="setLanguage(0)">
+            EN
+          </button>
+          <button type="button" class="my-1 me-1 p-1 border-0" style="color: #999;" id="langHe" onclick="setLanguage(1)">
+            HE
+          </button>
+        </div>
 
       </div>
     </div>
   </nav>
 
-    <!-- Hero Image -->
+  <!-- Hero Image -->
   <div class="hero-image container-fluid">
     <div class="hero-text">
       <h1 class="text-uppercase display-4 py-5" style="font-weight: 800">Carbon Emissions worldwide</h1>
     </div>
   </div>
 
-  <div style="max-width: 1000px; margin: auto;">
-    <ul class="nav nav-underline p-2" data-bs-theme="dark">
+  <!-- Hauptnavigation -->
+  <div class="container" style="max-width: 1136px; margin: auto;" id="test">
+    <ul style="float: left;" class="nav nav-underline p-2 bg-dark navbar-dark" data-bs-theme="dark"
+      id="hauptnavigation">
       <li class="nav-item">
-        <a class="nav-link active text-uppercase mx-2" aria-current="page" href="#">2023</a>
+        <a class="nav-link active text-uppercase me-3" aria-current="page" href="#">2023</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-uppercase me-3" href="#">2022</a>
@@ -64,13 +71,12 @@
         <a class="nav-link text-uppercase me-3" href="#">2021</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-uppercase me-3" href="#">2020</a>
+        <a class="nav-link text-uppercase me-0" href="#">2020</a>
       </li>
     </ul>
   </div>
-
-  <div style="background-color: lightblue; min-height: 50%">
-    <div class="container-fluid py-3" style="max-width: 1000px; margin: auto;">
+  <div style="background-color: lightblue; min-height: 50%; clear:both;">
+    <div class="container-fluid py-3" style="max-width: 1136px; margin: auto;">
 
       <!-- Filter Elemente -->
       <p class=" mt-3" id="jsFilter"></p>
@@ -80,25 +86,35 @@
     </div>
   </div>
 
-  <!-- Footer Navigation -->
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 
-    <div class="container-fluid" style="max-width: 1000px;">
-      <ul class="navbar-nav">
-        <li class="nav-item pe-3">
-          <a class="nav-link" href="#">Legal</a>
-        </li>
+  <!-- Footer Navigation -->
+  <div class="container-fluid" style="max-width: 1136px;">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark py-5">
+      <ul class="navbar-nav text-uppercase me-auto">
         <li class="nav-item pe-3">
           <a class="nav-link" href="#">Imprint</a>
+        </li>
+        <li class="nav-item pe-3">
+          <a class="nav-link" href="#">Privacy</a>
+        </li>
+        <li class="nav-item pe-3">
+          <a class="nav-link" href="#">About Us</a>
         </li>
         <li class="nav-item pe-3">
           <a class="nav-link" href="#">Support our Work</a>
         </li>
       </ul>
-    </div>
+      <span class="navbar-text me-2 my-3">Photo by Oliver Hartmann</span>
+    </nav>
 
-  </nav>
-  <script type="text/javascript" src="carbon.js">
-  </script>
+  </div>
+
+
+  <script type="text/javascript" src="carbon.js"> </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
+
 </html>

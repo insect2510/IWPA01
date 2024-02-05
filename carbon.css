@@ -7,7 +7,7 @@ html {
 /* The hero image */
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image. This will make the text easier to read */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url("img/carbon-hero.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url("img/carbon-hero.jpg");
 
   /* Set a specific height */
   height: 250px;
