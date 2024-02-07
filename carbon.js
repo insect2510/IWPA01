@@ -1,7 +1,8 @@
 // Globale Variablen definieren
-let arrowCss = ["bi bi-sort-alpha-down", "bi bi-sort-alpha-up-alt", "bi bi-sort-numeric-down", "bi bi-sort-numeric-up-alt"];
+let arrowCss = ["bi-sort-alpha-down", "bi-sort-alpha-up-alt", "bi-sort-numeric-down", "bi-sort-numeric-up-alt"];
 let arrow = [arrowCss[0], arrowCss[0], arrowCss[2]];
-let btnActiveCss = "btn btn-success", btnInactiveCss = "btn btn-light";
+let btnActiveCss = "btn-success", btnInactiveCss = "btn-light";
+let btnCss = [btnActiveCss, btnInactiveCss];
 let iconColor = [btnInactiveCss, btnInactiveCss, btnInactiveCss];
 let filterButtonColor = [btnActiveCss, btnInactiveCss];
 let dir = 0, column = 0, totalEmission, myArr, myArrLenght, tableLenght;
@@ -9,6 +10,8 @@ let tableHead = ["Company", "Country", "Emission", "Ratio in %"];
 let searchFor = tableHead[0];
 let htmlFilter = "";
 let htmlTable = "";
+let iconColorCss = ["#fefefe", "#765432"]
+let iconColorArry = [iconColorCss[0], iconColorCss[0], iconColorCss[0],]
 
 writeHtmlFilter();
 
@@ -80,7 +83,7 @@ function writeHtmlFilter() {
  htmlFilter = "<input style='max-width: 200px;' class='me-3 p-2 mb-3' type='text' id='myFilter' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
  htmlFilter += "<div class='btn-group me-0'>";
   for (h = 0; h < (tableHead.length - 2); h++) {
-   htmlFilter += "<button type='button' class='" + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
+   htmlFilter += "<button type='button' class='btn " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
    htmlFilter += "</button>";
   }
  htmlFilter += "</div>";
@@ -102,8 +105,8 @@ function writeHtmlTable(myArr) {
       htmlTable += " text-end";
     };
     htmlTable += "'><div class='d-inline-flex flex-column flex-md-row'><div class='align-self-center'>" + tableHead[x];
-    htmlTable += "</div><div><button type='button' class='" + iconColor[x] + " ms-0 ms-md-2 px-2' onclick='mySort(myArr, " + (x + 1) + ")'>";
-    htmlTable += "<span class='" + arrow[x] + " aria-hidden='true'></span></button></div></th>";
+    htmlTable += "</div><div><button type='button' id='sortBtn" + x + "' class='btn " + iconColor[x] + " ms-0 ms-md-2 px-2' onclick='sortTable(" + (x) + ")' style='background-color: #234567;'>";
+    htmlTable += "<span class='bi " + arrow[x] + " aria-hidden='true'></span></button></div></th>";
   }
   htmlTable += "<th class='px-2 py-3 py-md-4 text-end align-top align-md-middle'><div>" + tableHead[3] + "</div></div></th>";
   htmlTable += "</tr>";
@@ -132,7 +135,6 @@ function myFilter(column) {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myFilter");
   filter = input.value.toUpperCase();
-  console.log(filter);
   table = document.getElementById("javaTable");
   tr = table.getElementsByTagName("tr");
   tableLenght = myArr.length;
@@ -186,7 +188,87 @@ function getTotalEmission() {
   return totalEmission;
 }
 
-// Array sortieren
+
+function sortTable(column) {
+  var table, rows, switching, i, x, y, shouldSwitch;
+
+  dir = !dir
+  for (i=0; i < 3; i++ ) {
+    document.getElementById(("sortBtn"+i)).style = "background-color: " + iconColorCss[0];
+    //btnId.classList.remove(btnActiveCss);
+    //btnId.classList.remove(btnInactiveCss);
+    //btnId[i].style = iconColorCss[0]
+  }
+  document.getElementById(("sortBtn"+column)).style = "background-color: " + iconColorCss[1];
+  //btnId[column].style = iconColorCss[1]
+  //let btnId = document.getElementById(("sortBtn"+column));
+  //btnId.classList.add(btnActiveCss);
+  //console.log(btnId)
+
+
+  table = document.getElementById("javaTable");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+
+  if (dir == 0) {
+    arrow[column] = arrowCss[1];
+  }
+  else {
+    arrow[column] = arrowCss[0]
+  }
+
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 2); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[column];
+      y = rows[i + 1].getElementsByTagName("TD")[column];
+      
+      //check if the two rows should switch place:
+      if (dir == 0 && column < 2 && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+ 
+        break;
+      }
+      else if (dir == 1 && column < 2 && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+
+        break;
+      }
+      else if (dir == 0 && column == 2 && Number(x.innerHTML) > Number(y.innerHTML)) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+ 
+        break;
+      }
+      else if (dir == 1 && column == 2 && Number(x.innerHTML) < Number(y.innerHTML)) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+
+
+/* Array sortieren
 function mySort(myArr2, spalte) {
 
   if (dir == 0 && spalte == 1) {
@@ -270,6 +352,8 @@ function mySort(myArr2, spalte) {
   writeHtmlTable(myArr2);
   return myArr2;
 }
+**/
+
 
 function setLanguage(language) {
 if (language == 0) {
