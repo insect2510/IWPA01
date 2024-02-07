@@ -1,17 +1,12 @@
 // Globale Variablen definieren
-let arrowCss = ["bi-sort-alpha-down", "bi-sort-alpha-up-alt", "bi-sort-numeric-down", "bi-sort-numeric-up-alt"];
-let arrow = [arrowCss[0], arrowCss[0], arrowCss[2]];
-let btnActiveCss = "btn-success", btnInactiveCss = "btn-light";
-let btnCss = [btnActiveCss, btnInactiveCss];
-let iconColor = [btnInactiveCss, btnInactiveCss, btnInactiveCss];
-let filterButtonColor = [btnActiveCss, btnInactiveCss];
-let dir = 0, column = 0, totalEmission, myArr, myArrLenght, tableLenght;
-let tableHead = ["Company", "Country", "Emission", "Ratio in %"];
-let searchFor = tableHead[0];
-let htmlFilter = "";
-let htmlTable = "";
-let iconColorCss = ["#fefefe", "#765432"]
-let iconColorArry = [iconColorCss[0], iconColorCss[0], iconColorCss[0],]
+let sortIcon = "bi bi-caret-up-fill";
+let btnActiveCss = "btn-success", btnInactiveCss = "btn-light", filterButtonColor = [btnActiveCss, btnInactiveCss];
+let dir = [0, 0, 0], column = 0, totalEmission, myArr, tableLenght;
+let tableHead = ["Company", "Country", "Emission", "Ratio in %"], searchFor = tableHead[0];
+let htmlFilter, htmlTable;
+let iconBackColor = ["#ededed", "#198754"], iconTextColor = ["#000000", "#fefefe"];
+let iconStyleInit = "backgroundcolor: " + iconBackColor[0] + "; color: " + iconTextColor[0] + "; rotate: 0deg";
+let preColumn = 0;
 
 writeHtmlFilter();
 
@@ -21,7 +16,10 @@ try {
 } catch (error) {
   document.getElementById("jsTableDom").innerHTML = "Error loading data. Please try again later. A"
 
+
 }
+
+sortTable(0);
 
 // JSON Daten für die Tabelle laden
 async function loadData() {
@@ -76,17 +74,16 @@ function isEmissionNumber(myArr) {
 }
 
 
-
 // HTML für Filter erzeugen
 function writeHtmlFilter() {
   // erzeugt Filter Button
- htmlFilter = "<input style='max-width: 200px;' class='me-3 p-2 mb-3' type='text' id='myFilter' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
- htmlFilter += "<div class='btn-group me-0'>";
+  htmlFilter = "<input style='max-width: 200px;' class='me-3 p-2 mb-3' type='text' id='myFilter' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
+  htmlFilter += "<div class='btn-group me-0'>";
   for (h = 0; h < (tableHead.length - 2); h++) {
-   htmlFilter += "<button type='button' class='btn " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
-   htmlFilter += "</button>";
+    htmlFilter += "<button type='button' class='btn " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
+    htmlFilter += "</button>";
   }
- htmlFilter += "</div>";
+  htmlFilter += "</div>";
   document.getElementById("jsFilter").innerHTML = htmlFilter;
 }
 
@@ -104,11 +101,11 @@ function writeHtmlTable(myArr) {
     if (x == 2) {
       htmlTable += " text-end";
     };
-    htmlTable += "'><div class='d-inline-flex flex-column flex-md-row'><div class='align-self-center'>" + tableHead[x];
-    htmlTable += "</div><div><button type='button' id='sortBtn" + x + "' class='btn " + iconColor[x] + " ms-0 ms-md-2 px-2' onclick='sortTable(" + (x) + ")' style='background-color: #234567;'>";
-    htmlTable += "<span class='bi " + arrow[x] + " aria-hidden='true'></span></button></div></th>";
+    htmlTable += "'><div class='d-inline-flex flex-column flex-md-row'><div class='align-self-center py-md-2'>" + tableHead[x].toUpperCase()
+    htmlTable += "</div><div><button type='button' id='sortBtn" + x + "' class='ms-0 ms-md-2 px-1 py-0 my-md-2 border-0 rounded-1' onclick='sortTable(" + (x) + ")' style = '" + iconStyleInit + "'>";
+    htmlTable += "<span class='bi " + sortIcon + " aria-hidden='true'></span></button></div></th>";
   }
-  htmlTable += "<th class='px-2 py-3 py-md-4 text-end align-top align-md-middle'><div>" + tableHead[3] + "</div></div></th>";
+  htmlTable += "<th class='px-2 py-3 py-md-4 text-end align-top align-md-middle'><div>" + tableHead[3].toUpperCase() + "</div></div></th>";
   htmlTable += "</tr>";
 
   // Array auslesen und Tabellenfelder erzeugen
@@ -188,34 +185,30 @@ function getTotalEmission() {
   return totalEmission;
 }
 
-
+// Tabelle sortieren nach Auswahl der Spalte
 function sortTable(column) {
   var table, rows, switching, i, x, y, shouldSwitch;
 
-  dir = !dir
-  for (i=0; i < 3; i++ ) {
-    document.getElementById(("sortBtn"+i)).style = "background-color: " + iconColorCss[0];
-    //btnId.classList.remove(btnActiveCss);
-    //btnId.classList.remove(btnInactiveCss);
-    //btnId[i].style = iconColorCss[0]
+  if (preColumn == column) {
+    dir[column] = !dir[column]
   }
-  document.getElementById(("sortBtn"+column)).style = "background-color: " + iconColorCss[1];
-  //btnId[column].style = iconColorCss[1]
-  //let btnId = document.getElementById(("sortBtn"+column));
-  //btnId.classList.add(btnActiveCss);
-  //console.log(btnId)
+  document.getElementById(("sortBtn" + preColumn)).style.backgroundColor = iconBackColor[0];
+  document.getElementById(("sortBtn" + preColumn)).style.color = iconTextColor[0];
+  document.getElementById(("sortBtn" + column)).style.backgroundColor = iconBackColor[1];
+  document.getElementById(("sortBtn" + column)).style.color = iconTextColor[1];
 
+  preColumn = column;
 
   table = document.getElementById("javaTable");
   switching = true;
+
   /*Make a loop that will continue until
   no switching has been done:*/
-
-  if (dir == 0) {
-    arrow[column] = arrowCss[1];
+  if (dir[column] == 0) {
+    document.getElementById(("sortBtn" + column)).style.rotate = "0deg";
   }
   else {
-    arrow[column] = arrowCss[0]
+    document.getElementById(("sortBtn" + column)).style.rotate = "180deg";
   }
 
   while (switching) {
@@ -231,27 +224,27 @@ function sortTable(column) {
       one from current row and one from the next:*/
       x = rows[i].getElementsByTagName("TD")[column];
       y = rows[i + 1].getElementsByTagName("TD")[column];
-      
+
       //check if the two rows should switch place:
-      if (dir == 0 && column < 2 && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-        //if so, mark as a switch and break the loop:
-        shouldSwitch = true;
- 
-        break;
-      }
-      else if (dir == 1 && column < 2 && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+      if (dir[column] == 0 && column < 2 && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
         //if so, mark as a switch and break the loop:
         shouldSwitch = true;
 
         break;
       }
-      else if (dir == 0 && column == 2 && Number(x.innerHTML) > Number(y.innerHTML)) {
+      else if (dir[column] == 1 && column < 2 && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
         //if so, mark as a switch and break the loop:
         shouldSwitch = true;
- 
+
         break;
       }
-      else if (dir == 1 && column == 2 && Number(x.innerHTML) < Number(y.innerHTML)) {
+      else if (dir[column] == 0 && column == 2 && Number(x.innerHTML) > Number(y.innerHTML)) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+
+        break;
+      }
+      else if (dir[column] == 1 && column == 2 && Number(x.innerHTML) < Number(y.innerHTML)) {
         //if so, mark as a switch and break the loop:
         shouldSwitch = true;
 
@@ -265,109 +258,22 @@ function sortTable(column) {
       switching = true;
     }
   }
+
 }
-
-
-/* Array sortieren
-function mySort(myArr2, spalte) {
-
-  if (dir == 0 && spalte == 1) {
-    dir = !dir;
-    arrow[0] = arrowCss[0];
-    iconColor = [btnActiveCss, btnInactiveCss, btnInactiveCss];
-    myArr2.sort(function (a, b) {
-      let x = a.unternehmen.toLowerCase();
-      let y = b.unternehmen.toLowerCase();
-      if (x < y) { return -1; }
-      if (x > y) { return 1; }
-      return 0;
-    });
-  }
-
-  else if (dir == 1 && spalte == 1) {
-    arrow[0] = arrowCss[1];
-    dir = !dir;
-    iconColor = [btnActiveCss, btnInactiveCss, btnInactiveCss];
-    myArr.sort(function (a, b) {
-      let x = a.unternehmen.toLowerCase();
-      let y = b.unternehmen.toLowerCase();
-      if (x < y) { return 1; }
-      if (x > y) { return -1; }
-      return 0;
-    });
-  }
-
-  else if (dir == 0 && spalte == 2) {
-    arrow[1] = arrowCss[0];
-    dir = !dir;
-    iconColor = [btnInactiveCss, btnActiveCss, btnInactiveCss];
-    myArr2.sort(function (a, b) {
-      let x = a.land.toLowerCase();
-      let y = b.land.toLowerCase();
-      if (x < y) { return -1; }
-      if (x > y) { return 1; }
-      return 0;
-    });
-  }
-
-  else if (dir == 1 && spalte == 2) {
-    arrow[1] = arrowCss[1];
-    dir = !dir;
-    iconColor = [btnInactiveCss, btnActiveCss, btnInactiveCss];
-    myArr2.sort(function (a, b) {
-      let x = a.land.toLowerCase();
-      let y = b.land.toLowerCase();
-      if (x < y) { return 1; }
-      if (x > y) { return -1; }
-      return 0;
-    });
-  }
-
-  else if (dir == 0 && spalte == 3) {
-    arrow[2] = arrowCss[2];
-    dir = !dir;
-    iconColor = [btnInactiveCss, btnInactiveCss, btnActiveCss];
-    myArr2.sort(function (a, b) {
-      let x = Number(a.verbrauch);
-      let y = Number(b.verbrauch);
-      if (x < y) { return -1; }
-      if (x > y) { return 1; }
-      return 0;
-    });
-  }
-
-  else if (dir == 1 && spalte == 3) {
-    arrow[2] = arrowCss[3];
-    dir = !dir;
-    iconColor = [btnInactiveCss, btnInactiveCss, btnActiveCss];
-    myArr2.sort(function (a, b) {
-      let x = Number(a.verbrauch);
-      let y = Number(b.verbrauch);
-      if (x < y) { return 1; }
-      if (x > y) { return -1; }
-      return 0;
-    });
-  };
-
-  writeHtmlTable(myArr2);
-  return myArr2;
-}
-**/
-
 
 function setLanguage(language) {
-if (language == 0) {
-  document.getElementById("hauptnavigation").style = "float: left;";
-  document.getElementById("langEn").style = "color: #fff;";
-  document.getElementById("langHe").style = "color: #999;";
+  if (language == 0) {
+    document.getElementById("hauptnavigation").style = "float: left;";
+    document.getElementById("langEn").style = "color: #fff;";
+    document.getElementById("langHe").style = "color: #999;";
 
-}
-else {
-  document.getElementById("hauptnavigation").style = "float: right;";
-  document.getElementById("langEn").style = "color: #999;";
-  document.getElementById("langHe").style = "color: #fff;";
+  }
+  else {
+    document.getElementById("hauptnavigation").style = "float: right;";
+    document.getElementById("langEn").style = "color: #999;";
+    document.getElementById("langHe").style = "color: #fff;";
 
 
-}
+  }
 
 }
