@@ -77,7 +77,7 @@ function isEmissionNumber(myArr) {
 // HTML für Filter erzeugen
 function writeHtmlFilter() {
   // erzeugt Filter Button
-  htmlFilter = "<input style='max-width: 200px;' class='me-3 p-2 mb-3' type='text' id='myFilter' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
+  htmlFilter = "<input style='max-width: 200px;' class='me-3 p-2 mb-3' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
   htmlFilter += "<div class='btn-group me-0'>";
   for (h = 0; h < (tableHead.length - 2); h++) {
     htmlFilter += "<button type='button' class='btn " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
@@ -97,7 +97,7 @@ function writeHtmlTable(myArr) {
 
   // Tabellenkopf erzeugen
   for (x = 0; x < tableHead.length - 1; x++) {
-    htmlTable += "<th class='px-2 py-3 align-top w-25";
+    htmlTable += "<th class='px-2 px-md-4 py-3 align-top w-25";
     if (x == 2) {
       htmlTable += " text-end";
     };
@@ -105,22 +105,22 @@ function writeHtmlTable(myArr) {
     htmlTable += "</div><div><button type='button' id='sortBtn" + x + "' class='ms-0 ms-md-2 px-1 py-0 my-md-2 border-0 rounded-1' onclick='sortTable(" + (x) + ")' style = '" + iconStyleInit + "'>";
     htmlTable += "<span class='bi " + sortIcon + " aria-hidden='true'></span></button></div></th>";
   }
-  htmlTable += "<th class='px-2 py-3 py-md-4 text-end align-top align-md-middle'><div>" + tableHead[3].toUpperCase() + "</div></div></th>";
+  htmlTable += "<th class='px-2 px-md-4 py-3 py-md-4 text-end align-top align-md-middle'><div>" + tableHead[3].toUpperCase() + "</div></div></th>";
   htmlTable += "</tr>";
 
   // Array auslesen und Tabellenfelder erzeugen
   for (x = 0; x < myArr.length; x++) {
-    htmlTable += "<tr><td class='px-2 py-3 w-25'>" + myArr[x].unternehmen + "</td>"
-    htmlTable += "<td class='px-2 py-3 w-25'>" + myArr[x].land + "</td>"
-    htmlTable += "<td class='px-2 py-3 text-end w-25'>" + myArr[x].verbrauch + "</td>";
+    htmlTable += "<tr><td class='px-2 px-md-4 py-3 w-25'>" + myArr[x].unternehmen + "</td>"
+    htmlTable += "<td class='px-2 px-md-4 py-3 w-25'>" + myArr[x].land + "</td>"
+    htmlTable += "<td class='px-2 px-md-4 py-3 text-end w-25'>" + myArr[x].verbrauch + "</td>";
     //Anteil eines Landes an der gesamten Emission berechnen und mit 2 Stellen nach Komma umwandeln
     ratioEmission = (myArr[x].verbrauch / totalEmission * 100).toFixed(2);
-    htmlTable += "<td class='px-2 py-3 text-end w-25'>" + ratioEmission + "</td></tr>";
+    htmlTable += "<td class='px-2 px-md-4 py-3 text-end w-25'>" + ratioEmission + "</td></tr>";
 
   }
 
   // Zeile für keine Einträge vorhanden erzeugen und ausblenden
-  htmlTable += "<tr style='display: none'><td class='p-3'><em>no entries</em></td><td class='p-3'> </td><td class='p-3'> </td><td class='p-3'> </td></tr>";
+  htmlTable += "<tr style='display: none'><td class='p-3'><em>No matches found.</em></td><td class='p-3'> </td><td class='p-3'> </td><td class='p-3'> </td></tr>";
   // Tabelle schließen
   htmlTable += "</table>";
   // erzeugtes HTML im DOM aktuallisieren
@@ -130,7 +130,7 @@ function writeHtmlTable(myArr) {
 function myFilter(column) {
 
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myFilter");
+  input = document.getElementById("myFilterSearch");
   filter = input.value.toUpperCase();
   table = document.getElementById("javaTable");
   tr = table.getElementsByTagName("tr");
