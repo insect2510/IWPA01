@@ -1,11 +1,11 @@
 // Globale Variablen definieren
 let sortIcon = "bi bi-caret-up-fill";
 let btnActiveCss = "btn-success", btnInactiveCss = "btn-light", filterButtonColor = [btnActiveCss, btnInactiveCss];
-let dir = [0, 0, 0], column = 0, totalEmission, myArr, tableLenght;
+let dir = [1, 0, 0], column = 0, totalEmission, myArr, tableLenght;
 let tableHead = ["Company", "Country", "Emission", "Ratio in %"], searchFor = tableHead[0];
 let htmlFilter, htmlTable;
 let iconBackColor = ["#ededed", "#198754"], iconTextColor = ["#000000", "#fefefe"];
-let iconStyleInit = "backgroundcolor: " + iconBackColor[0] + "; color: " + iconTextColor[0] + "; rotate: 0deg";
+let iconStyleInit = "background-color: " + iconBackColor[0] + "; color: " + iconTextColor[0] + "; rotate: 0deg";
 let preColumn = 0;
 
 writeHtmlFilter();
@@ -19,7 +19,7 @@ try {
 
 }
 
-sortTable(0);
+
 
 // JSON Daten für die Tabelle laden
 async function loadData() {
@@ -127,6 +127,7 @@ function writeHtmlTable(myArr) {
   document.getElementById("jsTableDom").innerHTML = htmlTable;
 };
 
+// Tabelle filter
 function myFilter(column) {
 
   var input, filter, table, tr, td, i, txtValue;
@@ -157,6 +158,7 @@ function myFilter(column) {
   }
 }
 
+// Filter Buttons umschalten
 function changeFilterButton(button) {
   if (button == 0) {
     filterButtonColor[0] = btnActiveCss;
