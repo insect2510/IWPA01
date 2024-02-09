@@ -77,10 +77,10 @@ function isEmissionNumber(myArr) {
 // HTML für Filter erzeugen
 function writeHtmlFilter() {
   // erzeugt Filter Button
-  htmlFilter = "<div class='row ms-0 g-0 mb-4'><input class='col-12 col-md-6 w-50-md p-2 my-2 me-md-2 border-0' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
-  htmlFilter += "<div class='btn-group gap-0 mx-0 col-12 col-md-3'>";
+  htmlFilter = "<div class='mx-0 mb-4'><input style='max-width: 200px;' class='p-2 my-2 border-0' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
+  htmlFilter += "<div class='btn-group mx-0'>";
   for (h = 0; h < (tableHead.length - 2); h++) {
-    htmlFilter += "<button type='button' class='btn border-1 rounded-0 p-2 w-25 my-2 me-md-2 " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
+    htmlFilter += "<button type='button' class='btn border-1 rounded-0 py-2 my-2 " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
     htmlFilter += "</button>";
   }
   htmlFilter += "</div> </div>";
@@ -106,7 +106,7 @@ function writeHtmlTable(myArr) {
     htmlTable += "</div><div><button type='button' id='sortBtn" + x + "' class='ms-0 ms-md-2 px-1 py-0 my-md-2 border-0 rounded-1' onclick='sortTable(" + (x) + ")' style = '" + iconStyleInit + "'>";
     htmlTable += "<span class='bi " + sortIcon + " aria-hidden='true'></span></button></div></th>";
   }
-  htmlTable += "<th class='px-2 px-md-4 py-3 py-md-4 text-end align-top align-md-middle'><div>" + tableHead[3].toUpperCase() + "</div></div></th>";
+  htmlTable += "<th class='px-2 px-md-4 py-3 py-md-4 text-end align-top align-md-middle w-25'><div>" + tableHead[3].toUpperCase() + "</div></div></th>";
   htmlTable += "</tr>";
 
   // Array auslesen und Tabellenfelder erzeugen
@@ -116,7 +116,7 @@ function writeHtmlTable(myArr) {
     htmlTable += "<td class='px-2 px-md-4 py-3 text-end w-25'>" + myArr[x].verbrauch + "</td>";
     //Anteil eines Landes an der gesamten Emission berechnen und mit 2 Stellen nach Komma umwandeln
     ratioEmission = (myArr[x].verbrauch / totalEmission * 100).toFixed(2);
-    htmlTable += "<td class='px-2 px-md-4 py-3 text-end w-25'>" + ratioEmission + "</td></tr>";
+    htmlTable += "<td class='px-2 px-md-4 py-3 w-25 text-end'>" + ratioEmission + "</td></tr>";
 
   }
 
