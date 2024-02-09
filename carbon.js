@@ -6,7 +6,7 @@ let tableHead = ["Company", "Country", "Emission", "Ratio in %"], searchFor = ta
 let htmlFilter, htmlTable;
 let iconBackColor = ["#ededed", "#198754"], iconTextColor = ["#000000", "#fefefe"];
 let iconStyleInit = "background-color: " + iconBackColor[0] + "; color: " + iconTextColor[0] + "; rotate: 0deg";
-let preColumn = 0;
+let preColumn = 0, preYear = 0;
 
 writeHtmlFilter();
 
@@ -77,22 +77,23 @@ function isEmissionNumber(myArr) {
 // HTML für Filter erzeugen
 function writeHtmlFilter() {
   // erzeugt Filter Button
-  htmlFilter = "<input style='max-width: 200px;' class='me-3 p-2 mb-3' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
-  htmlFilter += "<div class='btn-group me-0'>";
+  htmlFilter = "<div class='row ms-0 g-0 mb-4'><input class='col-12 col-md-6 w-50-md p-2 my-2 me-md-2 border-0' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
+  htmlFilter += "<div class='btn-group gap-0 mx-0 col-12 col-md-3'>";
   for (h = 0; h < (tableHead.length - 2); h++) {
-    htmlFilter += "<button type='button' class='btn " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
+    htmlFilter += "<button type='button' class='btn border-1 rounded-0 p-2 w-25 my-2 me-md-2 " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
     htmlFilter += "</button>";
   }
-  htmlFilter += "</div>";
+  htmlFilter += "</div> </div>";
   document.getElementById("jsFilter").innerHTML = htmlFilter;
 }
 
 // HTML für Tabelle aus Array erzeugen
 function writeHtmlTable(myArr) {
+
   let x = 0;
 
   // Tabelle anlegen
-  htmlTable = "<table class='table table-hover table-light' id='javaTable'>";
+  htmlTable = "<table class='table table-hover table-bordered table-light' id='javaTable'>";
   htmlTable += "<tr class='table-dark'>";
 
   // Tabellenkopf erzeugen
@@ -120,7 +121,7 @@ function writeHtmlTable(myArr) {
   }
 
   // Zeile für keine Einträge vorhanden erzeugen und ausblenden
-  htmlTable += "<tr style='display: none'><td class='p-3'><em>No matches found.</em></td><td class='p-3'> </td><td class='p-3'> </td><td class='p-3'> </td></tr>";
+  htmlTable += "<tr style='display: none'><td class='p-3'><em>No data found.</em></td><td class='p-3'> </td><td class='p-3'> </td><td class='p-3'> </td></tr>";
   // Tabelle schließen
   htmlTable += "</table>";
   // erzeugtes HTML im DOM aktuallisieren
@@ -277,5 +278,49 @@ function setLanguage(language) {
 
 
   }
+}
+
+function changeYear(year){
+  yearBtn = document.getElementById("hauptnavigation");
+  yearBtn = yearBtn.getElementsByTagName("button");
+  yearBtn[preYear].classList.remove("active")
+  yearBtn[year].classList.add("active")
+  preYear = year;
+  return year;
+
 
 }
+  // Tabelle filter
+function noData(year) {
+
+  changeYear(year);
+
+  var table, tr, td, i;
+
+  table = document.getElementById("javaTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length - 1; i++) {
+    tr[i].style.display = "none";
+  }
+
+tr[tr.length-1].style.display = "";
+  
+}
+function data(year) {
+
+  changeYear(year);
+
+
+  var table, tr, td, i;
+
+  table = document.getElementById("javaTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length - 1; i++) {
+    tr[i].style.display = "";
+  }
+
+tr[tr.length-1].style.display = "none";
+  
+}
+
+

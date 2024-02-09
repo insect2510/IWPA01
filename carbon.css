@@ -29,3 +29,85 @@ html {
   transform: translate(-50%, -50%);
   color: white;
 }
+
+h1 {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+h2 {
+  color: #aaaaaa;
+  text-decoration: none;
+}
+
+p {
+  color: #aaaaaa;
+  text-decoration: none;
+}
+
+p a {
+  color: #aaaaaa;
+
+  text-decoration: underline;
+}
+p a:visited {
+  color: #aaaaaa;
+}
+
+p a:hover {
+  color: #cecece;
+  background-color: #555555;
+}
+
+
+.haupt-nav {
+  background-color: transparent;
+  color: #cccccc;
+  text-decoration: none;
+}
+
+.haupt-nav a {
+  background-color: #333333;
+  color: #cccccc;
+  text-decoration: none;
+}
+.haupt-nav a:visited {
+  background-color: transparent;
+  color: #cccccc;
+}
+
+.haupt-nav a:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+.haupt-nav a.active {
+
+  background-color: #555555;
+  color: #ffffff;
+}
+.haupt-nav a.active:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+button {
+  background-color: #333333;
+  color: #cccccc;
+  text-decoration: none;
+  border: 0;
+  padding: 16px 16px;
+  margin: 0px;
+}
+
+button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+button.active {
+  background-color: #555555;
+  color: #ffffff;
+}
+button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
