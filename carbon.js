@@ -77,10 +77,10 @@ function isEmissionNumber(myArr) {
 // HTML für Filter erzeugen
 function writeHtmlFilter() {
   // erzeugt Filter Button
-  htmlFilter = "<div class='mx-0 mb-4'><input style='max-width: 200px;' class='p-2 my-2 border-0' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
-  htmlFilter += "<div class='btn-group mx-0'>";
+  htmlFilter = "<div class='mx-0 mb-4 row'><input style='' class='col-12 col-md-6 p-2 my-2 border-0' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
+  htmlFilter += "<div class='btn-group mx-0 col-6 col-md-3 g-0 mx-0 mx-mx-2'>";
   for (h = 0; h < (tableHead.length - 2); h++) {
-    htmlFilter += "<button type='button' class='btn border-1 rounded-0 py-2 my-2 " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
+    htmlFilter += "<button type='button' class='btn border-1 rounded-0 py-2 my-2 g-1 " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
     htmlFilter += "</button>";
   }
   htmlFilter += "</div> </div>";
