@@ -4,11 +4,10 @@
   --buttonbackgroundcolor: #333333;
   --textcolor: #aaaaaa;
   --accentwhite: #ffffff;
-  --darkaccentcolor: #000000;
+  --accendarkcolor: #111111;
   --activebackgroundcolor: #555555;
   --accentblue: #078daa;
 }
-
 
 body,
 html {
@@ -104,11 +103,9 @@ button.active {
   color: #cccccc;
 }
 
-
-
 .main-nav:hover {
-  background-color: var(--accentblue);
-  color: var(--accentwhite);
+  background-color: var(--accentwhite);
+
 }
 
 .main-nav.active {
@@ -121,7 +118,7 @@ button.active {
 .filterbutton {
   background-color: var(--buttonbackgroundcolor);
   color: var(--accentwhite);
-  border: 1px solid #078daa;
+  border: 1px solid var(--accentblue);
   width: 50%;
   opacity: 1;
 }
@@ -129,7 +126,7 @@ button.active {
 
 .filterbutton:hover {
   background-color: var(--accentwhite);
-  opacity: 0.8;
+
 }
 
 .filterbutton.active {
@@ -138,10 +135,23 @@ button.active {
   color: var(--accentwhite);
   opacity: 1;
 }
-.filterbutton.active:hover {
 
-  background-color: var(--accentblue);
-  color: var(--accentwhite);
-  opacity: 0.8;
+.langbutton {
+  background-color: var(--backgroundcolor);
+  color: var(--textcolor);
+
 }
 
+
+.langbutton:hover {
+  background-color: var(--accentwhite);
+  color: var(--backgroundcolor);
+
+}
+
+.langbutton.active {
+
+  background-color: var(--backgroundcolor);
+  color: var(--accentwhite);
+
+}

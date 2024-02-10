@@ -1,17 +1,15 @@
 // Globale Variablen definieren
 let sortIcon = "bi bi-caret-up-fill";
-let btnActiveCss = "btn-success", btnInactiveCss = "btn-light", filterButtonColor = [btnActiveCss, btnInactiveCss];
-let dir = [1, 0, 0], column = 0, totalEmission, myArr, tableLenght;
+//let btnActiveCss = "btn-success", btnInactiveCss = "btn-light", filterButtonColor = [btnActiveCss, btnInactiveCss];
+let totalEmission, myArr, tableLenght;
 let tableHead = ["Company", "Country", "Emission", "Ratio in %"], searchFor = tableHead[0];
 let htmlFilter, htmlTable;
 let iconBackColor = ["#ededed", "#198754"], iconTextColor = ["#000000", "#fefefe"];
 let iconStyleInit = "background-color: " + iconBackColor[0] + "; color: " + iconTextColor[0] + "; rotate: 0deg";
-let preColumn = 0, preYear = 0, preFilter = 0;
-
+let dir = [1, 0, 0], column = 0, preColumn = 0, preYear = 0, preFilter = 0;
 
 writeHtmlFilter2();
 writeHtmlFilterButtons2();
-
 
 try {
   loadData();
@@ -21,7 +19,6 @@ try {
 
 
 }
-
 
 
 // JSON Daten für die Tabelle laden
@@ -76,29 +73,14 @@ function isEmissionNumber(myArr) {
   return emissionNotValid
 }
 
-
-// HTML für Filter erzeugen
-function writeHtmlFilter() {
-  // erzeugt Filter Button
-  htmlFilter = "<div class='mx-0 mb-4 row'><input style='' class='col-12 col-md-6 p-2 my-2 border-0' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
-  //
-  htmlFilter += "<div class='btn-group mx-0 col-6 col-md-3 g-0 mx-0 mx-mx-2'>";
-  for (h = 0; h < (tableHead.length - 2); h++) {
-    htmlFilter += "<button type='button' class='btn border-1 rounded-0 py-2 my-2 g-1 " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
-    htmlFilter += "</button>";
-  }
-  htmlFilter += "</div> </div>";
-  document.getElementById("jsFilter").innerHTML = htmlFilter;
-}
-
 // HTML2 für Filter erzeugen
 function writeHtmlFilter2() {
   // erzeugt Filter Button
   htmlFilter = "<input style='' class='col-12 p-2 my-2 border-1' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
   document.getElementById("myFilterSearch2").innerHTML = htmlFilter;
 }
-  //
-  function writeHtmlFilterButtons2() {
+//
+function writeHtmlFilterButtons2() {
   htmlFilter = "";
   //for (h = 0; h < (tableHead.length - 2); h++) {
   //  htmlFilter += "<button type='button' class='btn border-1 rounded-0 py-2 my-2 g-1 " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
@@ -183,25 +165,6 @@ function myFilter(column) {
   }
 }
 
-// Filter Buttons umschalten
-function changeFilterButton(button) {
-  if (button == 0) {
-    filterButtonColor[0] = btnActiveCss;
-    filterButtonColor[1] = btnInactiveCss;
-    searchFor = tableHead[0];
-    column = 0;
-    writeHtmlFilter();
-    writeHtmlTable(myArr);
-  }
-  else {
-    filterButtonColor[0] = btnInactiveCss;
-    filterButtonColor[1] = btnActiveCss;
-    searchFor = tableHead[1];
-    column = 1;
-    writeHtmlFilter();
-    writeHtmlTable(myArr);
-  }
-}
 // Filter Buttons umschalten
 function changeFilterButton2(filterButton) {
   let filterButtonId;
@@ -311,22 +274,23 @@ function sortTable(column) {
 }
 
 function setLanguage(language) {
+  let langId;
+  langId = document.getElementById("langselect").getElementsByTagName("button")
   if (language == 0) {
     document.getElementById("hauptnavigation").style = "float: left;";
-    document.getElementById("langEn").style = "color: #fff;";
-    document.getElementById("langHe").style = "color: #999;";
+    langId[0].classList.add("active");
+    langId[1].classList.remove("active");
 
   }
   else {
     document.getElementById("hauptnavigation").style = "float: right;";
-    document.getElementById("langEn").style = "color: #999;";
-    document.getElementById("langHe").style = "color: #fff;";
-
+    langId[1].classList.add("active");
+    langId[0].classList.remove("active");
 
   }
 }
 
-function changeYear(year){
+function changeYear(year) {
   yearBtn = document.getElementById("hauptnavigation");
   yearBtn = yearBtn.getElementsByTagName("button");
   yearBtn[preYear].classList.remove("active")
@@ -336,7 +300,7 @@ function changeYear(year){
 
 
 }
-  // Tabelle filter
+// Tabelle filter
 function noData(year) {
 
   changeYear(year);
@@ -349,8 +313,8 @@ function noData(year) {
     tr[i].style.display = "none";
   }
 
-tr[tr.length-1].style.display = "";
-  
+  tr[tr.length - 1].style.display = "";
+
 }
 function data(year) {
 
@@ -365,8 +329,6 @@ function data(year) {
     tr[i].style.display = "";
   }
 
-tr[tr.length-1].style.display = "none";
-  
+  tr[tr.length - 1].style.display = "none";
+
 }
-
-
