@@ -155,3 +155,31 @@ button.active {
   color: var(--accentwhite);
 
 }
+
+.globalnav a {
+  background-color: var(--backgroundcolor);
+  color: var(--textcolor);
+  text-decoration: none;
+  padding: 0.5rem;
+
+}
+
+.globalnav a:hover {
+  background-color: var(--accentwhite);
+  color: var(--backgroundcolor);
+
+}
+.globalnav.active {
+
+  background-color: var(--backgroundcolor);
+  color: var(--accentwhite);
+  
+
+}
+
+.globalnav a.active {
+
+  background-color: var(--backgroundcolor);
+  color: var(--accentwhite);
+
+}
