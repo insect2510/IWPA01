@@ -6,9 +6,12 @@ let tableHead = ["Company", "Country", "Emission", "Ratio in %"], searchFor = ta
 let htmlFilter, htmlTable;
 let iconBackColor = ["#ededed", "#198754"], iconTextColor = ["#000000", "#fefefe"];
 let iconStyleInit = "background-color: " + iconBackColor[0] + "; color: " + iconTextColor[0] + "; rotate: 0deg";
-let preColumn = 0, preYear = 0;
+let preColumn = 0, preYear = 0, preFilter = 0;
 
 writeHtmlFilter();
+writeHtmlFilter2();
+writeHtmlFilterButtons2();
+
 
 try {
   loadData();
@@ -78,6 +81,7 @@ function isEmissionNumber(myArr) {
 function writeHtmlFilter() {
   // erzeugt Filter Button
   htmlFilter = "<div class='mx-0 mb-4 row'><input style='' class='col-12 col-md-6 p-2 my-2 border-0' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
+  //
   htmlFilter += "<div class='btn-group mx-0 col-6 col-md-3 g-0 mx-0 mx-mx-2'>";
   for (h = 0; h < (tableHead.length - 2); h++) {
     htmlFilter += "<button type='button' class='btn border-1 rounded-0 py-2 my-2 g-1 " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
@@ -85,6 +89,26 @@ function writeHtmlFilter() {
   }
   htmlFilter += "</div> </div>";
   document.getElementById("jsFilter").innerHTML = htmlFilter;
+}
+
+// HTML2 für Filter erzeugen
+function writeHtmlFilter2() {
+  // erzeugt Filter Button
+  htmlFilter = "<input style='' class='col-12 p-2 my-2 border-1' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
+  document.getElementById("myFilterSearch2").innerHTML = htmlFilter;
+}
+  //
+  function writeHtmlFilterButtons2() {
+  htmlFilter = "";
+  //for (h = 0; h < (tableHead.length - 2); h++) {
+  //  htmlFilter += "<button type='button' class='btn border-1 rounded-0 py-2 my-2 g-1 " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
+  //  htmlFilter += "</button>";
+  //}
+  htmlFilter += "<button type='button' class='filterbutton active py-2 my-2 g-1' onclick='changeFilterButton2(0)'>" + tableHead[0];
+  htmlFilter += "<button type='button' class='filterbutton py-2 my-2 g-1' onclick='changeFilterButton2(1)'>" + tableHead[1];
+  htmlFilter += "</button>";
+
+  document.getElementById("myFilterButtons2").innerHTML = htmlFilter;
 }
 
 // HTML für Tabelle aus Array erzeugen
@@ -175,6 +199,28 @@ function changeFilterButton(button) {
     searchFor = tableHead[1];
     column = 1;
     writeHtmlFilter();
+    writeHtmlTable(myArr);
+  }
+}
+// Filter Buttons umschalten
+function changeFilterButton2(filterButton) {
+  let filterButtonId;
+  filterButtonId = document.getElementById("myFilterButtons2").getElementsByTagName("button");
+
+  if (filterButton == 0) {
+    filterButtonId[0].classList.add("active")
+    filterButtonId[1].classList.remove("active")
+    searchFor = tableHead[0];
+    column = 0;
+    writeHtmlFilter2();
+    writeHtmlTable(myArr);
+  }
+  else {
+    filterButtonId[1].classList.add("active")
+    filterButtonId[0].classList.remove("active")
+    searchFor = tableHead[1];
+    column = 1;
+    writeHtmlFilter2();
     writeHtmlTable(myArr);
   }
 }

@@ -9,10 +9,12 @@
   --accentblue: #078daa;
 }
 
+
 body,
 html {
   height: 100%;
   background-color: var(--backgroundcolor);
+  color: calc(var(--accentblue)*0.8)
 }
 
 nav {
@@ -117,19 +119,29 @@ button.active {
 
 
 .filterbutton {
-  background-color: var(--backgroundcolor);
-  color: #cccccc;
+  background-color: var(--buttonbackgroundcolor);
+  color: var(--accentwhite);
+  border: 1px solid #078daa;
+  width: 50%;
+  opacity: 1;
 }
 
 
 .filterbutton:hover {
-  background-color: var(--accentblue);
-  color: var(--accentwhite);
+  background-color: var(--accentwhite);
+  opacity: 0.8;
 }
 
 .filterbutton.active {
 
   background-color: var(--accentblue);
   color: var(--accentwhite);
+  opacity: 1;
+}
+.filterbutton.active:hover {
+
+  background-color: var(--accentblue);
+  color: var(--accentwhite);
+  opacity: 0.8;
 }
 
