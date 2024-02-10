@@ -8,7 +8,7 @@ let iconBackColor = ["#ededed", "#198754"], iconTextColor = ["#000000", "#fefefe
 let iconStyleInit = "background-color: " + iconBackColor[0] + "; color: " + iconTextColor[0] + "; rotate: 0deg";
 let preColumn = 0, preYear = 0, preFilter = 0;
 
-writeHtmlFilter();
+
 writeHtmlFilter2();
 writeHtmlFilterButtons2();
 
