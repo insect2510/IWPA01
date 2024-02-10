@@ -1,7 +1,23 @@
+:root {
+
+  --backgroundcolor: #222222;
+  --buttonbackgroundcolor: #333333;
+  --textcolor: #aaaaaa;
+  --accentwhite: #ffffff;
+  --darkaccentcolor: #000000;
+  --activebackgroundcolor: #555555;
+  --accentblue: #078daa;
+}
+
 body,
 html {
   height: 100%;
-  /*background-color: lightblue;*/
+  background-color: var(--backgroundcolor);
+}
+
+nav {
+
+  background-color: var(--backgroundcolor);
 }
 
 /* The hero image */
@@ -27,21 +43,20 @@ html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
 }
 
 h1 {
-  color: #ffffff;
+  color: var(--accentwhite);
   text-decoration: none;
 }
 
 h2 {
-  color: #aaaaaa;
+  color: var(--textcolor);
   text-decoration: none;
 }
 
 p {
-  color: #aaaaaa;
+  color: var(--textcolor);
   text-decoration: none;
 }
 
@@ -50,6 +65,7 @@ p a {
 
   text-decoration: underline;
 }
+
 p a:visited {
   color: #aaaaaa;
 }
@@ -59,36 +75,6 @@ p a:hover {
   background-color: #555555;
 }
 
-
-.haupt-nav {
-  background-color: transparent;
-  color: #cccccc;
-  text-decoration: none;
-}
-
-.haupt-nav a {
-  background-color: #333333;
-  color: #cccccc;
-  text-decoration: none;
-}
-.haupt-nav a:visited {
-  background-color: transparent;
-  color: #cccccc;
-}
-
-.haupt-nav a:hover {
-  background-color: #ffffff;
-  color: #000000;
-}
-.haupt-nav a.active {
-
-  background-color: #555555;
-  color: #ffffff;
-}
-.haupt-nav a.active:hover {
-  background-color: #ffffff;
-  color: #000000;
-}
 
 button {
   background-color: #333333;
@@ -100,14 +86,50 @@ button {
 }
 
 button:hover {
-  background-color: #ffffff;
+  background-color: var(--accentcolor);
   color: #000000;
 }
+
 button.active {
   background-color: #555555;
   color: #ffffff;
 }
-button:hover {
-  background-color: #ffffff;
-  color: #000000;
+
+
+
+.main-nav {
+  background-color: var(--backgroundcolor);
+  color: #cccccc;
 }
+
+
+
+.main-nav:hover {
+  background-color: var(--accentblue);
+  color: var(--accentwhite);
+}
+
+.main-nav.active {
+
+  background-color: var(--accentblue);
+  color: var(--accentwhite);
+}
+
+
+.filterbutton {
+  background-color: var(--backgroundcolor);
+  color: #cccccc;
+}
+
+
+.filterbutton:hover {
+  background-color: var(--accentblue);
+  color: var(--accentwhite);
+}
+
+.filterbutton.active {
+
+  background-color: var(--accentblue);
+  color: var(--accentwhite);
+}
+
