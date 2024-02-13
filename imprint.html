@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="carbon.css">
 </head>
 
-<body class="bg-dark">
+<body class="">
     <!-- Header Menü -->
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark py-3 fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark py-3 fixed-top">
         <div class="container-fluid" style="max-width: 1136px;">
             <a class="navbar-brand" href="index.html"><img src="img/carbon-logo2.png" style="width:40px"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -21,41 +21,41 @@
             </button>
             <div class="collapse navbar-collapse justify-content-center-md" id="mynavbar">
 
-                <ul class="navbar-nav me-auto pt-2 text-uppercase" data-bs-theme="dark">
-                    <li class="nav-item px-3 pt-1 p-md-1">
-                        <a class="nav-link active" href="#">Emissons</a>
+                <ul class="navbar-nav me-auto mt-2 mt-md-0 text-uppercase ">
+                    <li class="py-3 globalnav active">
+                        <a class="" href="#">Emissons</a>
                     </li>
-                    <li class="nav-item px-3 py-2 p-md-1">
-                        <a class="nav-link" href="#">Climate Change</a>
+                    <li class="py-3 globalnav">
+                        <a class="" href="#">Climate Change</a>
                     </li>
-                    <li class="nav-item px-3 py-2 p-md-1">
-                        <a class="nav-link" href="#">Clean Energy</a>
+                    <li class="py-3 globalnav">
+                        <a class="" href="#">Clean Energy</a>
                     </li>
                 </ul>
 
                 <form class="btn-group border-1 px-3 py-4 p-md-1">
-                    <input class="p-1" type="text" placeholder="Search" style="width: 180px;">
+                    <input class="p-1" type="text" placeholder="Search" style="max-width: 180px;">
                     <i class="btn btn-dark bi-search px-2 rounded-0 border-1" type="button"></i>
                 </form>
-                <div class="btn-group me-2" role="group" data-bs-theme="dark" id="lang">
-                    <button type="button" class="my-1 p-1 border-0" style="color: #fff;" id="langEn">
+                <div id="langselect">
+                    <button type="button" class="langbutton active my-1 p-1 border-0" id="langEn"
+                        onclick="setLanguage(0)">
                         EN
                     </button>
-                    <button type="button" class="my-1 me-1 p-1 border-0" style="color: #999;" id="langHe">
+                    <button type="button" class="langbutton my-1 p-1 border-0" id="langHe" onclick="setLanguage(1)">
                         HE
                     </button>
                 </div>
-
             </div>
         </div>
     </nav>
 
     <!-- Text -->
 
-    <div style="background-color: lightblue; min-height: 50%; clear:both; padding-top: 100px;">
+    <div style="padding-top: 100px;">
         <div class="container-fluid pb-5" style="max-width: 1136px; margin: auto;">
 
-            <p class="h1 my-5">Imprint</p>
+            <h2>Imprint</h2>
             <section>
                 <p>This Privacy Policy informs you about the nature, scope, and purpose of the processing of personal
                     data (hereinafter referred to as "data") within the framework of our online offering and the
@@ -67,7 +67,7 @@
                 </p>
             </section>
             <section>
-                <p class="h3">Controller</p>
+                <h3>Controller</h3>
                 <p>
                     Provider:
                     [Your Name or Company Name]
@@ -76,25 +76,25 @@
                     [Email Address]
                     [Phone Number]
                 </p>
-                <p class="h3">Representative:</p>
+                <h3>Representative:</h3>
 
                 <p>[If applicable, mention the name of the representative]</p>
 
 
-                <p class="h3">Legal Information:</p>
+                <h3>Legal Information:</h3>
 
                 <p>Registered Office:
                     [Your registered office, if applicable]</p>
 
-                <p class="h3">Registration Number:</p>
+                <h3>Registration Number:</h3>
 
                 <p>[If applicable, provide the registration number]</p>
 
-                <p class="h3">VAT Identification Number:</p>
+                <h3>VAT Identification Number:</h3>
 
                 <p>[If applicable, provide the VAT ID]</p>
 
-                <p class="h3">Responsible for Content:</p>
+                <h3>Responsible for Content:</h3>
 
                 <p>[Your Name or designated responsible person]
                     [Your Address]
@@ -102,27 +102,27 @@
                     [Email Address]
                     [Phone Number]</p>
 
-                <p class="h3">Disclaimer:</p>
+                <h3>Disclaimer:</h3>
 
                 <p>Despite careful content control, we assume no liability for the content of external links. The
                     operators of the linked pages are solely responsible for their content.</p>
 
 
-                <p class="h3">Copyright:</p>
+                <h3>Copyright:</h3>
 
                 <p>All content and works on this website are subject to copyright. The reproduction, adaptation,
                     distribution, or any kind of exploitation outside the limits of copyright require the written
                     consent of the respective author or creator.</p>
 
-                <p class="h3">Dispute Resolution:</p>
+                <h3>Dispute Resolution:</h3>
 
-                <p>The European Commission provides a platform for online dispute resolution (ODR): [Link to the ODR
-                    platform]</p>
+                    <p>The European Commission provides a platform for online dispute resolution (ODR): [Link to the ODR
+                        platform]</p>
 
-                <p class="h3">Consumer Dispute Resolution:</p>
+                    <h3>Consumer Dispute Resolution:</h3>
 
-                <p>We are not willing or obliged to participate in dispute resolution proceedings before a consumer
-                    arbitration board.</p>
+                    <p>We are not willing or obliged to participate in dispute resolution proceedings before a consumer
+                        arbitration board.</p>
 
             </section>
 
@@ -130,28 +130,38 @@
     </div>
 
     <!-- Footer Navigation -->
-    <div class="container-fluid" style="max-width: 1136px;">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark py-5">
-            <ul class="navbar-nav text-uppercase me-auto">
+    <div class="container-fluid py-5" style="max-width: 1136px;">
+        <div class="row">
+          <div class="col-12 col-md-9">
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    
+              <ul class="navbar-nav text-uppercase me-auto">
                 <li class="nav-item pe-3">
-                    <a class="nav-link" href="imprint.html">Imprint</a>
+                  <a class="nav-link" href="imprint.html">Imprint</a>
                 </li>
                 <li class="nav-item pe-3">
-                    <a class="nav-link" href="privacy.html">Privacy</a>
+                  <a class="nav-link" href="privacy.html">Privacy</a>
                 </li>
                 <li class="nav-item pe-3">
-                    <a class="nav-link" href="#">About Us</a>
+                  <a class="nav-link" href="#">About Us</a>
                 </li>
                 <li class="nav-item pe-3">
-                    <a class="nav-link" href="#">Support our Work</a>
+                  <a class="nav-link" href="#">Support our Work</a>
                 </li>
-            </ul>
-            <span class="navbar-text me-2 my-3">Photo by Oliver Hartmann</span>
-        </nav>
+              </ul>
+    
+            </nav>
+          </div>
+          <div class="col-12 col-md-3">
+            <div class="float-md-end me-2">
+              <p class="mb-1">Copyright by CEW 2024.</p>
+              <p class="mb-1">Photos by Oliver Hartmann</p>
+            </div>
+            <div>
+            </div>
+          </div>
 
-    </div>
-
-    <script type="text/javascript" src="carbon.js"> </script>
+    <script type="text/javascript" src="language.js"> </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
