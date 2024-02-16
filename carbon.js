@@ -4,8 +4,9 @@ let sortIcon = "bi bi-caret-up-fill";
 let totalEmission, myArr, tableLenght;
 let tableHead = ["Company", "Country", "Emission", "Ratio in %"], searchFor = tableHead[0];
 let htmlFilter, htmlTable;
-let iconBackColor = ["#ededed", "#198754"], iconTextColor = ["#000000", "#fefefe"];
-let iconStyleInit = "background-color: " + iconBackColor[0] + "; color: " + iconTextColor[0] + "; rotate: 0deg";
+//let iconBackColor = ["#ededed", "#198754"], iconTextColor = ["#000000", "#fefefe"];
+//let iconStyleInit = "background-color: " + iconBackColor[0] + "; color: " + iconTextColor[0] + "; rotate: 0deg";
+let iconStyleInit = "";
 let dir = [1, 0, 0], column = 0, preColumn = 0, preYear = 0, preFilter = 0;
 
 writeHtmlFilter2();
@@ -109,7 +110,7 @@ function writeHtmlTable(myArr) {
       htmlTable += " text-end";
     };
     htmlTable += "'><div class='d-inline-flex flex-column flex-md-row'><div class='align-self-center py-md-2'>" + tableHead[x].toUpperCase()
-    htmlTable += "</div><div><button type='button' id='sortBtn" + x + "' class='ms-0 ms-md-2 px-1 py-0 my-md-2 border-0 rounded-1' onclick='sortTable(" + (x) + ")' style = '" + iconStyleInit + "'>";
+    htmlTable += "</div><div><button type='button' id='sortBtn" + x + "' class='ms-0 ms-md-2 px-1 py-0 my-md-2 border-0 rounded-1 sortbutton' onclick='sortTable(" + (x) + ")' style = '" + iconStyleInit + "'>";
     htmlTable += "<span class='bi " + sortIcon + " aria-hidden='true'></span></button></div></th>";
   }
   htmlTable += "<th class='px-2 px-md-4 py-3 py-md-4 text-end align-top align-md-middle w-25'><div>" + tableHead[3].toUpperCase() + "</div></div></th>";
@@ -204,10 +205,12 @@ function sortTable(column) {
   if (preColumn == column) {
     dir[column] = !dir[column]
   }
-  document.getElementById(("sortBtn" + preColumn)).style.backgroundColor = iconBackColor[0];
-  document.getElementById(("sortBtn" + preColumn)).style.color = iconTextColor[0];
-  document.getElementById(("sortBtn" + column)).style.backgroundColor = iconBackColor[1];
-  document.getElementById(("sortBtn" + column)).style.color = iconTextColor[1];
+  document.getElementById(("sortBtn" + preColumn)).classList.remove("active");
+  document.getElementById(("sortBtn" + column)).classList.add("active");
+  //document.getElementById(("sortBtn" + preColumn)).style.backgroundColor = iconBackColor[0];
+  //document.getElementById(("sortBtn" + preColumn)).style.color = iconTextColor[0];
+  //document.getElementById(("sortBtn" + column)).style.backgroundColor = iconBackColor[1];
+  //document.getElementById(("sortBtn" + column)).style.color = iconTextColor[1];
 
   preColumn = column;
 
@@ -273,7 +276,7 @@ function sortTable(column) {
 
 }
 
-function setLanguage(language) {
+/**function setLanguage(language) {
   let langId;
   langId = document.getElementById("langselect").getElementsByTagName("button")
   if (language == 0) {
@@ -289,6 +292,7 @@ function setLanguage(language) {
 
   }
 }
+*/
 
 function changeYear(year) {
   yearBtn = document.getElementById("hauptnavigation");

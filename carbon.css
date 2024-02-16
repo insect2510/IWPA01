@@ -3,7 +3,7 @@
   --backgroundcolor: #222222;
   --buttonbackgroundcolor: #333333;
   --textcolor: #aaaaaa;
-  --accentwhite: #ffffff;
+  --accentwhite: #fefefe;
   --accendarkcolor: #111111;
   --activebackgroundcolor: #555555;
   --accentblue: #078daa;
@@ -19,6 +19,14 @@ html {
 nav {
 
   background-color: var(--backgroundcolor);
+}
+
+input {
+  background-color: var(--accentwhite);
+  color: var(--accendarkcolor);
+  opacity: 1.0;
+  border: 1px solid var(--accentblue);
+
 }
 
 /* The hero image */
@@ -87,6 +95,22 @@ p a:visited {
 p a:hover {
   color: #cecece;
   background-color: #555555;
+}
+
+ul {
+  padding-left: 0px;
+}
+
+.text-grey {
+  color: var(--textcolor);
+  text-decoration: none;
+}
+
+.infobox-header {
+  font-size: 1.5rem;
+  padding-bottom: 1.5rem;
+  text-decoration: bold;
+  text-transform: uppercase;
 }
 
 
@@ -165,6 +189,27 @@ button.active {
 .langbutton.active {
 
   background-color: var(--backgroundcolor);
+  color: var(--accentwhite);
+
+}
+
+
+.sortbutton {
+  background-color: transparent;
+  color: var(--accentwhite);
+
+}
+
+
+.sortbutton:hover {
+  background-color: var(--accentwhite);
+  color: var(--backgroundcolor);
+
+}
+
+.sortbutton.active {
+
+  background-color: var(--accentblue);
   color: var(--accentwhite);
 
 }
