@@ -1,11 +1,8 @@
 // Globale Variablen definieren
 let sortIcon = "bi bi-caret-up-fill";
-//let btnActiveCss = "btn-success", btnInactiveCss = "btn-light", filterButtonColor = [btnActiveCss, btnInactiveCss];
 let totalEmission, myArr, tableLenght;
 let tableHead = ["Company", "Country", "Emission", "Ratio in %"], searchFor = tableHead[0];
 let htmlFilter, htmlTable;
-//let iconBackColor = ["#ededed", "#198754"], iconTextColor = ["#000000", "#fefefe"];
-//let iconStyleInit = "background-color: " + iconBackColor[0] + "; color: " + iconTextColor[0] + "; rotate: 0deg";
 let iconStyleInit = "";
 let dir = [1, 0, 0], column = 0, preColumn = 0, preYear = 0, preFilter = 0;
 
@@ -77,7 +74,7 @@ function isEmissionNumber(myArr) {
 // HTML2 für Filter erzeugen
 function writeHtmlFilter2() {
   // erzeugt Filter Button
-  htmlFilter = "<input style='' class='col-12 p-2 my-2 border-1' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
+  htmlFilter = "<input style='' class='col-12 my-2' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
   document.getElementById("myFilterSearch2").innerHTML = htmlFilter;
 }
 //
