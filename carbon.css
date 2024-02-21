@@ -1,3 +1,4 @@
+/* Farbvariablen deklarieren*/
 :root {
 
   --backgroundcolor: #222222;
@@ -6,12 +7,15 @@
   --accentwhite: #fefefe;
   --inputtextcolor: #111111;
   --accentblue: #078daa;
+  --bs-navbar-color: #fefefe;
+  --footerbackgroundcolor: #111111;
 }
 
 body,
 html {
   height: 100%;
   background-color: var(--backgroundcolor);
+  overflow-anchor: none;
 }
 
 nav {
@@ -21,11 +25,11 @@ nav {
 
 input {
   background-color: var(--accentwhite);
-  color: var(--backgroundcolor)!important;
+  color: var(--backgroundcolor) !important;
   border: 1px solid var(--accentblue);
   opacity: 0.9;
   background-image: url('img/search.svg');
-  background-position: 0.75rem 0.75rem; 
+  background-position: 0.75rem 0.75rem;
   background-repeat: no-repeat;
   box-sizing: border-box;
   padding: 0.5rem 1rem 0.5rem 2.25rem;
@@ -38,15 +42,16 @@ input[type=text]:focus {
   outline: none;
   opacity: 1;
 }
-@media only screen and (min-width: 767px) {
-  .globalsearch{
-   max-width: 11.5rem;
+
+@media only screen and (min-width: 768px) {
+  .globalsearch {
+    max-width: 11.5rem;
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .globalsearch{
-   width: 100%;
+  .globalsearch {
+    width: 100%;
   }
 }
 
@@ -73,12 +78,14 @@ input[type=text]:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
 }
 
 h1 {
   color: var(--accentwhite);
   text-decoration: none;
   font-size: 4rem;
+  font-weight: 800;
 
 
 }
@@ -86,19 +93,22 @@ h1 {
 h2 {
   color: var(--accentwhite);
   text-decoration: none;
-  font-size: 3rem;
+  font-size: 2rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   text-transform: uppercase;
+  font-weight:800;
 }
 
 
 h3 {
   color: var(--textcolor);
   text-decoration: none;
-  font-size: 1.5 rem;
+  font-size: 1.5rem;
   padding-top: 2rem;
   padding-bottom: 1rem;
+  font-weight: 400;
+
 }
 
 p {
@@ -123,6 +133,7 @@ p a:hover {
 
 ul {
   padding-left: 0px;
+  color: var(--textcolor);
 }
 
 .text-grey {
@@ -133,7 +144,7 @@ ul {
 .infobox-header {
   font-size: 1.5rem;
   padding-bottom: 1.5rem;
-  text-decoration: bold;
+  font-weight: bold;
   text-transform: uppercase;
 }
 
@@ -252,17 +263,66 @@ button.active {
   color: var(--backgroundcolor);
 
 }
-.globalnav.active {
+
+.globalnav.active a {
 
   background-color: var(--backgroundcolor);
   color: var(--accentwhite);
-  
 
 }
 
-.globalnav a.active {
+.globalnav.active a:hover {
 
-  background-color: var(--backgroundcolor);
+  background-color: var(--accentwhite);
+  color: var(--backgroundcolor);
+
+}
+
+.navbar-toggler-icon {
+  font-size: 0.8rem;
+
+}
+
+.navbar-toggler-icon:hover {
+  font-size: 0.8rem;
+
+}
+
+.navbar-toggler {
+  background-color: var(--accentwhite);
+
+  border-radius: 0px;
+  padding: 0.25rem;
+
+}
+
+.navbar-toggler:hover {
+  background-color: var(--accentwhite);
+  border-radius: 4px;
+  padding: 0.25rem;
+
+}
+
+.footer {
+  background-color: var(--footerbackgroundcolor);
+}
+.footernav {
+
+  padding: 0rem 2rem 0rem 0rem;
+  margin-bottom: 2rem !important;
+
+
+}
+
+.footernav a {
+
+  color: var(--textcolor);
+  text-decoration: none;
+
+
+}
+
+.footernav a:hover {
   color: var(--accentwhite);
 
 }

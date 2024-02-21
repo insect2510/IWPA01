@@ -6,9 +6,6 @@ let htmlFilter, htmlTable;
 let iconStyleInit = "";
 let dir = [1, 0, 0], column = 0, preColumn = 0, preYear = 0, preFilter = 0;
 
-writeHtmlFilter2();
-writeHtmlFilterButtons2();
-
 try {
   loadData();
 
@@ -17,6 +14,11 @@ try {
 
 
 }
+
+writeHtmlFilter2();
+writeHtmlFilterButtons2();
+
+
 
 
 // JSON Daten für die Tabelle laden
@@ -80,10 +82,6 @@ function writeHtmlFilter2() {
 //
 function writeHtmlFilterButtons2() {
   htmlFilter = "";
-  //for (h = 0; h < (tableHead.length - 2); h++) {
-  //  htmlFilter += "<button type='button' class='btn border-1 rounded-0 py-2 my-2 g-1 " + filterButtonColor[h] + "' onclick='changeFilterButton(" + h + ")'>" + tableHead[h];
-  //  htmlFilter += "</button>";
-  //}
   htmlFilter += "<button type='button' class='filterbutton active py-2 my-2 g-1' onclick='changeFilterButton2(0)'>" + tableHead[0];
   htmlFilter += "<button type='button' class='filterbutton py-2 my-2 g-1' onclick='changeFilterButton2(1)'>" + tableHead[1];
   htmlFilter += "</button>";
@@ -204,10 +202,6 @@ function sortTable(column) {
   }
   document.getElementById(("sortBtn" + preColumn)).classList.remove("active");
   document.getElementById(("sortBtn" + column)).classList.add("active");
-  //document.getElementById(("sortBtn" + preColumn)).style.backgroundColor = iconBackColor[0];
-  //document.getElementById(("sortBtn" + preColumn)).style.color = iconTextColor[0];
-  //document.getElementById(("sortBtn" + column)).style.backgroundColor = iconBackColor[1];
-  //document.getElementById(("sortBtn" + column)).style.color = iconTextColor[1];
 
   preColumn = column;
 
@@ -273,23 +267,6 @@ function sortTable(column) {
 
 }
 
-/**function setLanguage(language) {
-  let langId;
-  langId = document.getElementById("langselect").getElementsByTagName("button")
-  if (language == 0) {
-    document.getElementById("hauptnavigation").style.float = "left";
-    langId[0].classList.add("active");
-    langId[1].classList.remove("active");
-
-  }
-  else {
-    document.getElementById("hauptnavigation").style.float = "right";
-    langId[1].classList.add("active");
-    langId[0].classList.remove("active");
-
-  }
-}
-*/
 
 function changeYear(year) {
   yearBtn = document.getElementById("hauptnavigation");

@@ -12,43 +12,42 @@
 </head>
 
 <body class="">
-   <!-- Header Menü -->
-   <nav class="navbar navbar-expand-md navbar-dark py-3 fixed-top">
-    <div class="container-fluid" style="max-width: 1136px;">
-        <a class="navbar-brand" href="index.html"><img src="img/carbon-logo2.png" style="width:40px"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center-md" id="mynavbar">
+    <!-- Header Menü -->
+    <nav class="navbar navbar-expand-md py-3 fixed-top">
+        <div class="container-fluid" style="max-width: 1136px;">
+            <a class="navbar-brand" href="index.html"><img src="img/carbon-logo2.png" style="width:40px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center-md" id="mynavbar">
 
-            <ul class="navbar-nav me-auto mt-2 mt-md-0 text-uppercase ">
-                <li class="py-3 globalnav active">
-                    <a class="" href="index.html">Emissons</a>
-                </li>
-                <li class="py-3 globalnav">
-                    <a class="" href="climate-change.html">Climate Change</a>
-                </li>
-                <li class="py-3 globalnav">
-                    <a class="" href="#">Clean Energy</a>
-                </li>
-            </ul>
+                <ul class="navbar-nav me-auto mt-2 mt-md-0 text-uppercase ">
+                    <li class="py-3 py-md-3 my-1 my-md-0 globalnav">
+                        <a href="index.html">Emissons</a>
+                    </li>
+                    <li class="py-3 py-md-3 my-1 my-md-0 globalnav">
+                        <a href="climate-change.html">Climate Change</a>
+                    </li>
+                    <li class="py-3 py-md-3 my-1 my-md-0 globalnav">
+                        <a href="green-energy.html">Clean Energy</a>
+                    </li>
+                </ul>
 
-            <form class="btn-group border-1 px-3 py-4 p-md-1">
-                <input class="p-1" type="text" placeholder="Search" style="max-width: 180px;">
-                <i class="btn btn-dark bi-search px-2 rounded-0 border-1" type="button"></i>
-            </form>
-            <div id="langselect">
-                <button type="button" class="langbutton active my-1 p-1 border-0" id="langEn"
-                    onclick="setLanguage(0)">
-                    EN
-                </button>
-                <button type="button" class="langbutton my-1 p-1 border-0" id="langHe" onclick="setLanguage(1)">
-                    HE
-                </button>
+                <form class="me-3 my-4 my-md-0 ms-2 ms-md-0">
+                    <input class="globalsearch" type="text" placeholder="Search">
+                </form>
+                <div id="langselect" class="px-2 px-md-0 my-4 my-md-0">
+                    <button type="button" class="langbutton active my-1 p-1 border-0" id="langEn"
+                        onclick="setLanguage(0)">
+                        EN
+                    </button>
+                    <button type="button" class="langbutton my-1 p-1 border-0" id="langHe" onclick="setLanguage(1)">
+                        HE
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
 
     <!-- Text -->
@@ -99,38 +98,38 @@
     <!-- Footer Navigation -->
     <div class="container-fluid py-5" style="max-width: 1136px;">
         <div class="row">
-          <div class="col-12 col-md-9">
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    
-              <ul class="navbar-nav text-uppercase me-auto">
-                <li class="nav-item pe-3">
-                  <a class="nav-link" href="imprint.html">Imprint</a>
-                </li>
-                <li class="nav-item pe-3">
-                  <a class="nav-link" href="privacy.html">Privacy</a>
-                </li>
-                <li class="nav-item pe-3">
-                  <a class="nav-link" href="#">About Us</a>
-                </li>
-                <li class="nav-item pe-3">
-                  <a class="nav-link" href="#">Support our Work</a>
-                </li>
-              </ul>
-    
-            </nav>
-          </div>
-          <div class="col-12 col-md-3">
-            <div class="float-md-end me-2">
-              <p class="mb-1">Copyright by CEW 2024.</p>
-              <p class="mb-1">Photos by Oliver Hartmann</p>
-            </div>
-            <div>
-            </div>
-          </div>
+            <div class="col-12 col-md-8">
+                <nav class="navbar navbar-expand-md">
 
-    <script type="text/javascript" src="language.js"> </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+                    <ul class="navbar-nav text-uppercase me-auto">
+                        <li class="footernav">
+                            <a href="imprint.html">Imprint</a>
+                        </li>
+                        <li class="footernav ">
+                            <a href="privacy.html">Privacy</a>
+                        </li>
+                        <li class="footernav">
+                            <a href="#">About Us</a>
+                        </li>
+                        <li class="footernav">
+                            <a href="#">Support our Work</a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="float-md-end me-2">
+                    <p class="mb-1">Copyright by CEW 2024.</p>
+                    <p class="mb-1">Photos by Oliver Hartmann</p>
+                </div>
+                <div>
+                </div>
+            </div>
+
+            <script type="text/javascript" src="language.js"> </script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
 </body>
