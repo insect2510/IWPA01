@@ -16,7 +16,7 @@ try {
 }
 
 writeHtmlFilter2();
-writeHtmlFilterButtons2();
+writeHtmlFilterButtons();
 
 
 // JSON Daten für die Tabelle laden
@@ -82,14 +82,14 @@ function writeHtmlFilter2() {
   htmlFilter = "<input style='' class='col-12 my-2' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
   document.getElementById("myFilterSearch2").innerHTML = htmlFilter;
 }
-// erzeugt HTML für Filterbuttons
-function writeHtmlFilterButtons2() {
+// erzeugt HTML
+function writeHtmlFilterButtons() {
   htmlFilter = "";
-  htmlFilter += "<button type='button' class='filterbutton active py-2 my-2 g-1' onclick='changeFilterButton2(0)'>" + tableHead[0];
-  htmlFilter += "<button type='button' class='filterbutton py-2 my-2 g-1' onclick='changeFilterButton2(1)'>" + tableHead[1];
+  htmlFilter += "<button type='button' class='filterbutton active py-2 my-2 g-1' onclick='changeFilterButton(0)'>" + tableHead[0];
+  htmlFilter += "<button type='button' class='filterbutton py-2 my-2 g-1' onclick='changeFilterButton(1)'>" + tableHead[1];
   htmlFilter += "</button>";
 
-  document.getElementById("myFilterButtons2").innerHTML = htmlFilter;
+  document.getElementById("myFilterButtons").innerHTML = htmlFilter;
 }
 
 // HTML für Tabelle aus Array erzeugen
@@ -165,9 +165,9 @@ function myFilter(column) {
 }
 
 // Filter Buttons umschalten
-function changeFilterButton2(filterButton) {
+function changeFilterButton(filterButton) {
   let filterButtonId;
-  filterButtonId = document.getElementById("myFilterButtons2").getElementsByTagName("button");
+  filterButtonId = document.getElementById("myFilterButtons").getElementsByTagName("button");
 
   if (filterButton == 0) {
     filterButtonId[0].classList.add("active")
