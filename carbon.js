@@ -19,19 +19,22 @@ writeHtmlFilter2();
 writeHtmlFilterButtons2();
 
 
-
-
 // JSON Daten für die Tabelle laden
 async function loadData() {
+  // Prüfung ob beim Laden und Schreiben der Tabellendaten ein Fehler auftritt
   try {
     const response = await fetch("carbonData.json");
     const myObj = await response.json();
+    // Funktion onlyText zum löschen von Sonderzeichen aufrufen
     myArr = await onlyText(myObj);
+    // Funktion isEmissionNumber zur Prüfung ob Emission eine Zahl ist aufrufen
     emissionNotValid = isEmissionNumber(myArr);
+    // Wenn Emission keine Zahl ist, Hinweis ins DOM schreiben
     if (emissionNotValid === 1) {
       document.getElementById("jsTableDom").innerHTML = "Wrong data format. Please try again later."
       return myArr
     }
+    // Wenn Emission eine Zahl ist, Gesamtemission berechnen und HTML für Tabelle schreiben
     else {
       myArrLenght = myArr.length;
       getTotalEmission(myArr);
@@ -39,7 +42,7 @@ async function loadData() {
       return myArr;
     }
   }
-
+  // Bei Auftreten eines Fehlers, Meldung ins DOM schreiben.
   catch (error) {
     document.getElementById("jsTableDom").innerText = "Error loading data. Please try again later.";
   }
@@ -73,13 +76,13 @@ function isEmissionNumber(myArr) {
   return emissionNotValid
 }
 
-// HTML2 für Filter erzeugen
+// HTML für Tabellenfilter erzeugen
 function writeHtmlFilter2() {
-  // erzeugt Filter Button
+  // erzeugt HTML Suchfeld
   htmlFilter = "<input style='' class='col-12 my-2' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
   document.getElementById("myFilterSearch2").innerHTML = htmlFilter;
 }
-//
+// erzeugt HTML für Filterbuttons
 function writeHtmlFilterButtons2() {
   htmlFilter = "";
   htmlFilter += "<button type='button' class='filterbutton active py-2 my-2 g-1' onclick='changeFilterButton2(0)'>" + tableHead[0];
@@ -278,7 +281,7 @@ function changeYear(year) {
 
 
 }
-// Tabelle filter
+// Tabelle filtern
 function noData(year) {
 
   changeYear(year);
