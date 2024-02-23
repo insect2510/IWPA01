@@ -15,7 +15,7 @@ try {
 
 }
 
-writeHtmlFilter2();
+writeHtmlFilterSearch();
 writeHtmlFilterButtons();
 
 
@@ -77,10 +77,10 @@ function isEmissionNumber(myArr) {
 }
 
 // HTML für Tabellenfilter erzeugen
-function writeHtmlFilter2() {
+function writeHtmlFilterSearch() {
   // erzeugt HTML Suchfeld
-  htmlFilter = "<input style='' class='col-12 my-2' type='text' id='myFilterSearch' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
-  document.getElementById("myFilterSearch2").innerHTML = htmlFilter;
+  htmlFilter = "<input style='' class='col-12 my-2' type='text' id='myFilterInput' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
+  document.getElementById("myFilterSearch").innerHTML = htmlFilter;
 }
 // erzeugt HTML
 function writeHtmlFilterButtons() {
@@ -103,28 +103,26 @@ function writeHtmlTable(myArr) {
 
   // Tabellenkopf erzeugen
   for (x = 0; x < tableHead.length - 1; x++) {
-    htmlTable += "<th class='px-2 px-md-4 py-3 align-top w-25";
+    htmlTable += "<th class='px-1 px-md-4 py-2 py-md-1 align-top w-25 tabletext";
     if (x == 2) {
       htmlTable += " text-end";
     };
     htmlTable += "'><div class='d-inline-flex flex-column flex-md-row'><div class='align-self-center py-md-2'>" + tableHead[x].toUpperCase()
-    htmlTable += "</div><div><button type='button' id='sortBtn" + x + "' class='ms-0 ms-md-2 px-1 py-0 my-md-2 border-0 rounded-1 sortbutton' onclick='sortTable(" + (x) + ")' style = '" + iconStyleInit + "'>";
+    htmlTable += "</div><div><button type='button' id='sortBtn" + x + "' class='ms-0 ms-md-2 px-2 py-1 my-md-2 border-0 rounded-1 sortbutton' ";
+    htmlTable += "onclick='sortTable(" + (x) + ")' style = '" + iconStyleInit + "'>";
     htmlTable += "<span class='bi " + sortIcon + " aria-hidden='true'></span></button></div></th>";
   }
-  htmlTable += "<th class='px-2 px-md-4 py-3 py-md-4 text-end align-top align-md-middle w-25'><div>" + tableHead[3].toUpperCase() + "</div></div></th>";
+  htmlTable += "<th class='px-2 px-md-4 py-2 py-md-3 text-end align-top align-md-middle w-25'><div>" + tableHead[3].toUpperCase() + "</div></div></th>";
   htmlTable += "</tr>";
-
   // Array auslesen und Tabellenfelder erzeugen
   for (x = 0; x < myArr.length; x++) {
-    htmlTable += "<tr><td class='px-2 px-md-4 py-3 w-25'>" + myArr[x].unternehmen + "</td>"
-    htmlTable += "<td class='px-2 px-md-4 py-3 w-25'>" + myArr[x].land + "</td>"
-    htmlTable += "<td class='px-2 px-md-4 py-3 text-end w-25'>" + myArr[x].verbrauch + "</td>";
+    htmlTable += "<tr><td class='px-2 px-md-4 py-3 w-25 tabletext'>" + myArr[x].unternehmen + "</td>"
+    htmlTable += "<td class='px-2 px-md-4 py-3 w-25 tabletext'>" + myArr[x].land + "</td>"
+    htmlTable += "<td class='px-2 px-md-4 py-3 text-end w-25 tabletext'>" + myArr[x].verbrauch + "</td>";
     //Anteil eines Landes an der gesamten Emission berechnen und mit 2 Stellen nach Komma umwandeln
     ratioEmission = (myArr[x].verbrauch / totalEmission * 100).toFixed(2);
-    htmlTable += "<td class='px-2 px-md-4 py-3 w-25 text-end'>" + ratioEmission + "</td></tr>";
-
+    htmlTable += "<td class='px-2 px-md-4 py-3 w-25 text-end tabletext'>" + ratioEmission + "</td></tr>";
   }
-
   // Zeile für keine Einträge vorhanden erzeugen und ausblenden
   htmlTable += "<tr style='display: none'><td class='p-3'><em>No data found.</em></td><td class='p-3'> </td><td class='p-3'> </td><td class='p-3'> </td></tr>";
   // Tabelle schließen
@@ -137,7 +135,7 @@ function writeHtmlTable(myArr) {
 function myFilter(column) {
 
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myFilterSearch");
+  input = document.getElementById("myFilterInput");
   filter = input.value.toUpperCase();
   table = document.getElementById("javaTable");
   tr = table.getElementsByTagName("tr");
@@ -174,7 +172,7 @@ function changeFilterButton(filterButton) {
     filterButtonId[1].classList.remove("active")
     searchFor = tableHead[0];
     column = 0;
-    writeHtmlFilter2();
+    writeHtmlFilterSearch();
     writeHtmlTable(myArr);
   }
   else {
@@ -182,7 +180,7 @@ function changeFilterButton(filterButton) {
     filterButtonId[0].classList.remove("active")
     searchFor = tableHead[1];
     column = 1;
-    writeHtmlFilter2();
+    writeHtmlFilterSearch();
     writeHtmlTable(myArr);
   }
 }
@@ -196,23 +194,26 @@ function getTotalEmission() {
   return totalEmission;
 }
 
-// Tabelle sortieren nach Auswahl der Spalte
+// Tabelle sortieren nach Auswahl der Spalte in der Variable Column
 function sortTable(column) {
   var table, rows, switching, i, x, y, shouldSwitch;
 
+  // Prüfung ob die aktuell geklickte Spalte mit der zuvor geklickten Spalte gleich ist
   if (preColumn == column) {
+    //wenn ja, Sortierrichtung der Spalte invertieren
     dir[column] = !dir[column]
   }
+  // Aktive Klasse vom zuvor gekkickten Button entfernen
   document.getElementById(("sortBtn" + preColumn)).classList.remove("active");
+  // Aktive Klasse zum aktuell geklickten Button hinzufügen
   document.getElementById(("sortBtn" + column)).classList.add("active");
-
+  // aktuelle Spallte speichern.
   preColumn = column;
-
+  // Referenz auf Tabelle im DOM setzen
   table = document.getElementById("javaTable");
   switching = true;
 
-  /*Make a loop that will continue until
-  no switching has been done:*/
+  // Icon je nach Sortierrichtung rotieren.
   if (dir[column] == 0) {
     document.getElementById(("sortBtn" + column)).style.rotate = "0deg";
   }
@@ -220,54 +221,46 @@ function sortTable(column) {
     document.getElementById(("sortBtn" + column)).style.rotate = "180deg";
   }
 
+  //Loop der so lange läuft bis keine Zeilen mehr getauscht werden
   while (switching) {
     //start by saying: no switching is done:
     switching = false;
     rows = table.rows;
-    /*Loop through all table rows (except the
-    first, which contains table headers):*/
+    // Loop durch alle Tabellenzeilen, außer der ersten (Header) und der letzten (No Data)
     for (i = 1; i < (rows.length - 2); i++) {
       //start by saying there should be no switching:
       shouldSwitch = false;
-      /*Get the two elements you want to compare,
-      one from current row and one from the next:*/
+      // Referenz auf die Tabellenzelle der aktuellen Zeile sowie der folgenden Zeile
       x = rows[i].getElementsByTagName("TD")[column];
       y = rows[i + 1].getElementsByTagName("TD")[column];
-
-      //check if the two rows should switch place:
+      //Spalten Company und Country als String aufsteigend
       if (dir[column] == 0 && column < 2 && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
         //if so, mark as a switch and break the loop:
         shouldSwitch = true;
-
         break;
       }
+      //Spalten Company und Country als String absteigend
       else if (dir[column] == 1 && column < 2 && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-        //if so, mark as a switch and break the loop:
         shouldSwitch = true;
-
         break;
       }
+      //Spalte Emissionswert als Zahl aufsteigend
       else if (dir[column] == 0 && column == 2 && Number(x.innerHTML) > Number(y.innerHTML)) {
-        //if so, mark as a switch and break the loop:
         shouldSwitch = true;
-
         break;
       }
+      //Spalte Emissionswert als Zahl absteigend
       else if (dir[column] == 1 && column == 2 && Number(x.innerHTML) < Number(y.innerHTML)) {
-        //if so, mark as a switch and break the loop:
         shouldSwitch = true;
-
         break;
       }
     }
     if (shouldSwitch) {
-      /*If a switch has been marked, make the switch
-      and mark that a switch has been done:*/
+      /*If a switch has been marked, make the switch and mark that a switch has been done:*/
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
     }
   }
-
 }
 
 
@@ -297,7 +290,7 @@ function noData(year) {
   tr[tr.length - 1].style.display = "";
 
 }
-function data(year) {
+function hasData(year) {
 
   changeYear(year);
 

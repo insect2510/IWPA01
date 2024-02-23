@@ -7,7 +7,6 @@
   --accentwhite: #fefefe;
   --inputtextcolor: #111111;
   --accentblue: #078daa;
-  --bs-navbar-color: #fefefe;
   --footerbackgroundcolor: #111111;
 }
 
@@ -97,9 +96,8 @@ h2 {
   padding-top: 2rem;
   padding-bottom: 2rem;
   text-transform: uppercase;
-  font-weight:800;
+  font-weight: 800;
 }
-
 
 h3 {
   color: var(--textcolor);
@@ -108,17 +106,17 @@ h3 {
   padding-top: 2rem;
   padding-bottom: 1rem;
   font-weight: 400;
-
 }
 
 p {
   color: var(--textcolor);
   text-decoration: none;
+
 }
+
 
 p a {
   color: #aaaaaa;
-
   text-decoration: underline;
 }
 
@@ -130,6 +128,17 @@ p a:hover {
   color: #cecece;
   background-color: #555555;
 }
+
+.tabltext {
+  font-size: 15px;
+}
+@media only screen and (max-width: 375px) {
+  .tabletext {
+    font-size: 15px;
+  }
+}
+
+
 
 ul {
   padding-left: 0px;
@@ -169,7 +178,6 @@ button.active {
 }
 
 
-
 .main-nav {
   background-color: var(--backgroundcolor);
   color: #cccccc;
@@ -192,21 +200,18 @@ button.active {
   color: var(--accentwhite);
   border: 1px solid var(--accentblue);
   width: 50%;
-  opacity: 1;
 }
-
-
 .filterbutton:hover {
   background-color: var(--accentwhite);
-
 }
-
 .filterbutton.active {
-
   background-color: var(--accentblue);
   color: var(--accentwhite);
-  opacity: 1;
 }
+
+
+
+
 
 .langbutton {
   background-color: var(--backgroundcolor);
@@ -306,6 +311,7 @@ button.active {
 .footer {
   background-color: var(--footerbackgroundcolor);
 }
+
 .footernav {
 
   padding: 0rem 2rem 0rem 0rem;
