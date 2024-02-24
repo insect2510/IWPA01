@@ -1,75 +1,70 @@
 // Globale Variablen definieren
 let sortIcon = "bi bi-caret-up-fill";
-let totalEmission, myArr, tableLenght;
 let tableHead = ["Company", "Country", "Emission", "Ratio in %"], searchFor = tableHead[0];
-let htmlFilter, htmlTable;
+let htmlFilter, htmlTabletotalEmission, myArr, tableLenght;
 let iconStyleInit = "";
-let dir = [1, 0, 0], column = 0, preColumn = 0, preYear = 0, preFilter = 0;
+let dir = [1, 0, 0], column = 0, preColumn = 0, preYear = 0, preFilter = 0, totalEmission = 0;
+let errorHandle = 0;
 
-try {
-  loadData();
-
-} catch (error) {
-  document.getElementById("jsTableDom").innerHTML = "Error loading data. Please try again later. A"
-
-
-}
-
-writeHtmlFilterSearch();
-writeHtmlFilterButtons();
-
+loadData();
 
 // JSON Daten für die Tabelle laden
 async function loadData() {
-  // Prüfung ob beim Laden und Schreiben der Tabellendaten ein Fehler auftritt
+  // Prüfung ob beim Laden und Erzeugen des HTML der Tabellendaten ein Fehler auftritt
   try {
+    // Datei mit Daten laden und parsen
     const response = await fetch("carbonData.json");
     const myObj = await response.json();
     // Funktion onlyText zum löschen von Sonderzeichen aufrufen
     myArr = await onlyText(myObj);
     // Funktion isEmissionNumber zur Prüfung ob Emission eine Zahl ist aufrufen
     emissionNotValid = isEmissionNumber(myArr);
-    // Wenn Emission keine Zahl ist, Hinweis ins DOM schreiben
+    // Wenn Emission keine Zahl ist, Hinweis ins DOM schreiben und Hauptnavigation ausblenden
     if (emissionNotValid === 1) {
-      document.getElementById("jsTableDom").innerHTML = "Wrong data format. Please try again later."
-      return myArr
+      document.getElementById("jsTableDom").innerHTML = "<p>Wrong data format. Please try again later.</p>";
+      document.getElementById("hauptnavigation").style.display = "none"
+      return
     }
-    // Wenn Emission eine Zahl ist, Gesamtemission berechnen und HTML für Tabelle schreiben
+    // Wenn Emission eine Zahl ist, Gesamtemission berechnen und HTML für Tabelle und Filter schreiben
     else {
       myArrLenght = myArr.length;
       getTotalEmission(myArr);
       writeHtmlTable(myArr)
+      writeHtmlFilterSearch();
+      writeHtmlFilterButtons();
       return myArr;
     }
   }
-  // Bei Auftreten eines Fehlers, Meldung ins DOM schreiben.
+  // Bei Auftreten eines Fehlers, Meldung in das DOM schreiben und Hauptnavigation ausblenden
   catch (error) {
-    document.getElementById("jsTableDom").innerText = "Error loading data. Please try again later.";
+    document.getElementById("jsTableDom").innerHTML = "<p class='text-grey'>Error loading data. Please try again later.</p>"
+    document.getElementById("hauptnavigation").style.display = "none"
+    return
   }
 }
 
-// Sonderzeichnen aus den Array Textdaten entfernen damit kein Code aus den geladenen Daten eingeschleußt werden kann
+// Sonderzeichnen aus den Datenfelder company und country entfernen damit kein Code aus den geladenen Daten eingeschleußt werden kann
 function onlyText(myObj) {
   for (i = 0; i < myObj.length; i++) {
-    myObj[i].unternehmen = myObj[i].unternehmen.replace(/(<|>|!|§|$|%)/g, "");
-    myObj[i].land = myObj[i].land.replace(/(<|>|!|§|$|%)/g, "");
-
+    myObj[i].company = myObj[i].company.replace(/(<|>|!|§|$|%)/g, "");
+    myObj[i].country = myObj[i].country.replace(/(<|>|!|§|$|%)/g, "");
   }
   return myObj
 }
 
-// prüfen ob die Werte für die Emission jedes Unternehmens eine Zahl ist
+// prüfen ob die Werte für die Emission jeder company eine Zahl ist
 function isEmissionNumber(myArr) {
   let emissionNotValid;
   i = 0;
   while (i < myArr.length) {
 
-    if (isNaN(myArr[i].verbrauch)) {
+    if (isNaN(myArr[i].emission)) {
       emissionNotValid = 1;
       break;
     }
     else {
       emissionNotValid = 0;
+      myArr[i].emission = myArr[i].emission.toFixed(2);
       i++;
     }
   }
@@ -78,11 +73,11 @@ function isEmissionNumber(myArr) {
 
 // HTML für Tabellenfilter erzeugen
 function writeHtmlFilterSearch() {
-  // erzeugt HTML Suchfeld
+  // erzeugt HTML Suchfeld im Filter
   htmlFilter = "<input style='' class='col-12 my-2' type='text' id='myFilterInput' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
   document.getElementById("myFilterSearch").innerHTML = htmlFilter;
 }
-// erzeugt HTML
+// erzeugt HTML für die Buttons des Filterkriteriums
 function writeHtmlFilterButtons() {
   htmlFilter = "";
   htmlFilter += "<button type='button' class='filterbutton active py-2 my-2 g-1' onclick='changeFilterButton(0)'>" + tableHead[0];
@@ -94,9 +89,7 @@ function writeHtmlFilterButtons() {
 
 // HTML für Tabelle aus Array erzeugen
 function writeHtmlTable(myArr) {
-
   let x = 0;
-
   // Tabelle anlegen
   htmlTable = "<table class='table table-hover table-bordered table-light' id='javaTable'>";
   htmlTable += "<tr class='table-dark'>";
@@ -107,7 +100,7 @@ function writeHtmlTable(myArr) {
     if (x == 2) {
       htmlTable += " text-end";
     };
-    htmlTable += "'><div class='d-inline-flex flex-column flex-md-row'><div class='align-self-center py-md-2'>" + tableHead[x].toUpperCase()
+    htmlTable += "'><div class='d-inline-flex flex-column flex-md-row'><div class='align-self-center py-md-2'>" + tableHead[x].toUpperCase();
     htmlTable += "</div><div><button type='button' id='sortBtn" + x + "' class='ms-0 ms-md-2 px-2 py-1 my-md-2 border-0 rounded-1 sortbutton' ";
     htmlTable += "onclick='sortTable(" + (x) + ")' style = '" + iconStyleInit + "'>";
     htmlTable += "<span class='bi " + sortIcon + " aria-hidden='true'></span></button></div></th>";
@@ -116,24 +109,24 @@ function writeHtmlTable(myArr) {
   htmlTable += "</tr>";
   // Array auslesen und Tabellenfelder erzeugen
   for (x = 0; x < myArr.length; x++) {
-    htmlTable += "<tr><td class='px-2 px-md-4 py-3 w-25 tabletext'>" + myArr[x].unternehmen + "</td>"
-    htmlTable += "<td class='px-2 px-md-4 py-3 w-25 tabletext'>" + myArr[x].land + "</td>"
-    htmlTable += "<td class='px-2 px-md-4 py-3 text-end w-25 tabletext'>" + myArr[x].verbrauch + "</td>";
-    //Anteil eines Landes an der gesamten Emission berechnen und mit 2 Stellen nach Komma umwandeln
-    ratioEmission = (myArr[x].verbrauch / totalEmission * 100).toFixed(2);
+    htmlTable += "<tr><td class='px-2 px-md-4 py-3 w-25 tabletext'>" + myArr[x].company + "</td>"
+    htmlTable += "<td class='px-2 px-md-4 py-3 w-25 tabletext'>" + myArr[x].country + "</td>"
+    htmlTable += "<td class='px-2 px-md-4 py-3 text-end w-25 tabletext'>" + myArr[x].emission + "</td>";
+    //Anteil einer company an der gesamten Emission berechnen und mit 2 Stellen nach Komma umwandeln
+    ratioEmission = (myArr[x].emission / totalEmission * 100).toFixed(2);
     htmlTable += "<td class='px-2 px-md-4 py-3 w-25 text-end tabletext'>" + ratioEmission + "</td></tr>";
   }
   // Zeile für keine Einträge vorhanden erzeugen und ausblenden
   htmlTable += "<tr style='display: none'><td class='p-3'><em>No data found.</em></td><td class='p-3'> </td><td class='p-3'> </td><td class='p-3'> </td></tr>";
   // Tabelle schließen
   htmlTable += "</table>";
+  htmlTable += "<p id='measurement'>The value for carbon emission are measured in Gigatons. In 2023 we have tracked " + myArr.length + " companies with a total emission of " + totalEmission + " Gigatons CO2.</p>";
   // erzeugtes HTML im DOM aktuallisieren
   document.getElementById("jsTableDom").innerHTML = htmlTable;
 };
 
 // Tabelle filter
 function myFilter(column) {
-
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myFilterInput");
   filter = input.value.toUpperCase();
@@ -166,7 +159,6 @@ function myFilter(column) {
 function changeFilterButton(filterButton) {
   let filterButtonId;
   filterButtonId = document.getElementById("myFilterButtons").getElementsByTagName("button");
-
   if (filterButton == 0) {
     filterButtonId[0].classList.add("active")
     filterButtonId[1].classList.remove("active")
@@ -185,12 +177,13 @@ function changeFilterButton(filterButton) {
   }
 }
 
-// Gesamt Emission aller Unternehmen berechnen
+// Gesamt Emission aller company berechnen
 function getTotalEmission() {
-  totalEmission = 0;
   for (x = 0; x < myArr.length; x++) {
-    totalEmission = totalEmission + Number(myArr[x].verbrauch);
-  }
+    totalEmission = totalEmission + Number(myArr[x].emission);
+
+;  }
+totalEmission = totalEmission.toFixed(2);
   return totalEmission;
 }
 
@@ -263,7 +256,6 @@ function sortTable(column) {
   }
 }
 
-
 function changeYear(year) {
   yearBtn = document.getElementById("hauptnavigation");
   yearBtn = yearBtn.getElementsByTagName("button");
@@ -271,16 +263,12 @@ function changeYear(year) {
   yearBtn[year].classList.add("active")
   preYear = year;
   return year;
-
-
 }
 // Tabelle filtern
 function noData(year) {
 
   changeYear(year);
-
   var table, tr, td, i;
-
   table = document.getElementById("javaTable");
   tr = table.getElementsByTagName("tr");
   for (i = 1; i < tr.length - 1; i++) {
@@ -288,21 +276,16 @@ function noData(year) {
   }
 
   tr[tr.length - 1].style.display = "";
-
+  document.getElementById("measurement").style.display = "none";
 }
 function hasData(year) {
-
   changeYear(year);
-
-
   var table, tr, td, i;
-
   table = document.getElementById("javaTable");
   tr = table.getElementsByTagName("tr");
   for (i = 1; i < tr.length - 1; i++) {
     tr[i].style.display = "";
   }
-
   tr[tr.length - 1].style.display = "none";
-
+  document.getElementById("measurement").style.display = "";
 }

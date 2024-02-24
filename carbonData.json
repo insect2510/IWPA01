@@ -1,67 +1,67 @@
    [
       {
-         "unternehmen": "<b>!§$%Virgin",
-         "land": "Australia",
-         "verbrauch": 213
+         "company": "Virgin",
+         "country": "Australia",
+         "emission": 213
       },
       {
-         "unternehmen": "Google",
-         "land": "USA",
-         "verbrauch": 25
+         "company": "Google",
+         "country": "USA",
+         "emission": 25
       },
       {
-         "unternehmen": "Spotify",
-         "land": "<b>Sweden",
-         "verbrauch": 19
+         "company": "Spotify",
+         "country": "Sweden",
+         "emission": 19.2892
       },
       {
-         "unternehmen": "Apple",
-         "land": "USA",
-         "verbrauch": "42"
+         "company": "Apple",
+         "country": "USA",
+         "emission": 42.424242
       },
       {
-         "unternehmen": "RWE",
-         "land": "Germany",
-         "verbrauch": 255
+         "company": "RWE",
+         "country": "Germany",
+         "emission": 255.773
       },
       {
-         "unternehmen": "Bayer",
-         "land": "Germany",
-         "verbrauch": 234
+         "company": "Bayer",
+         "country": "Germany",
+         "emission": 234
       },
       {
-         "unternehmen": "VW",
-         "land": "Germany",
-         "verbrauch": 15
+         "company": "VW",
+         "country": "Germany",
+         "emission": 15.1515
       },
       {
-         "unternehmen": "RWE",
-         "land": "Germany",
-         "verbrauch": 145
+         "company": "RWE",
+         "country": "Germany",
+         "emission": 145.145
       },
       {
-         "unternehmen": "Toyota",
-         "land": "Japan",
-         "verbrauch": 9
+         "company": "Toyota",
+         "country": "Japan",
+         "emission": 9.1348
       },
       {
-         "unternehmen": "France Telecom",
-         "land": "France",
-         "verbrauch": 34
+         "company": "France Telecom",
+         "country": "France",
+         "emission": 34.321
       },
       {
-         "unternehmen": "China Eastern",
-         "land": "China",
-         "verbrauch": 321
+         "company": "China Eastern",
+         "country": "China",
+         "emission": 321.34
       },
       {
-         "unternehmen": "Space X",
-         "land": "USA",
-         "verbrauch": 111
+         "company": "Space X",
+         "country": "USA",
+         "emission": 111.111
       },
       {
-         "unternehmen": "Audi",
-         "land": "Germany",
-         "verbrauch": 13
+         "company": "Audi",
+         "country": "Germany",
+         "emission": 13.13
       }
    ]
