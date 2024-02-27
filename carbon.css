@@ -114,7 +114,6 @@ p {
 
 }
 
-
 p a {
   color: #aaaaaa;
   text-decoration: underline;
@@ -138,8 +137,6 @@ p a:hover {
   }
 }
 
-
-
 ul {
   padding-left: 0px;
   color: var(--textcolor);
@@ -156,7 +153,6 @@ ul {
   font-weight: bold;
   text-transform: uppercase;
 }
-
 
 button {
   background-color: #333333;
@@ -194,7 +190,6 @@ button.active {
   color: var(--accentwhite);
 }
 
-
 .filterbutton {
   background-color: var(--buttonbackgroundcolor);
   color: var(--accentwhite);
@@ -209,17 +204,12 @@ button.active {
   color: var(--accentwhite);
 }
 
-
-
-
-
 .langbutton {
   background-color: var(--backgroundcolor);
   color: var(--textcolor);
   padding: 0.5rem !important;
 
 }
-
 
 .langbutton:hover {
   background-color: var(--accentwhite);
@@ -234,13 +224,11 @@ button.active {
 
 }
 
-
 .sortbutton {
   background-color: transparent;
   color: var(--accentwhite);
 
 }
-
 
 .sortbutton:hover {
   background-color: var(--accentwhite);
@@ -305,7 +293,6 @@ button.active {
   background-color: var(--accentwhite);
   border-radius: 4px;
   padding: 0.25rem;
-
 }
 
 .footer {
@@ -316,8 +303,6 @@ button.active {
 
   padding: 0rem 2rem 0rem 0rem;
   margin-bottom: 2rem !important;
-
-
 }
 
 .footernav a {
