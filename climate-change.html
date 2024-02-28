@@ -2,178 +2,162 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Climate Change</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link href=" https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css " rel="stylesheet">
-    <link rel="stylesheet" href="carbon.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Climate Change</title>
+  <link rel="icon" type="image/x-icon" href="img/favicon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link href=" https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css " rel="stylesheet">
+  <link rel="stylesheet" href="carbon.css">
 </head>
 
-<body class="">
-    <!-- Header Menü -->
-    <nav class="navbar navbar-expand-md py-3 fixed-top">
-        <div class="container-fluid" style="max-width: 1136px;">
-          <a class="navbar-brand" href="index.html"><img src="img/carbon-logo2.png" style="width:40px"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-            <span class="navbar-toggler-icon"></span>
+<body>
+  <!-- Globale Navigation-->
+  <nav class="navbar navbar-expand-md py-3 fixed-top">
+    <div class="container-fluid" style="max-width: 1136px;">
+      <a class="navbar-brand" href="index.html"><img src="img/carbon-logo2.png" style="width:40px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center-md" id="mynavbar">
+        <ul class="navbar-nav me-auto mt-2 mt-md-0 text-uppercase ">
+          <li class="py-3 py-md-3 my-1 my-md-0 globalnav active">
+            <a href="index.html">Emissons</a>
+          </li>
+          <li class="py-3 py-md-3 my-1 my-md-0 globalnav">
+            <a href="climate-change.html">Climate Change</a>
+          </li>
+          <li class="py-3 py-md-3 my-1 my-md-0 globalnav">
+            <a href="green-energy.html">Clean Energy</a>
+          </li>
+        </ul>
+        <!-- Globale Suche -->
+        <form class="me-3 my-4 my-md-0 ms-2 ms-md-0">
+          <input class="globalsearch" type="text" placeholder="Search">
+        </form>
+        <!-- Sprachwahl -->
+        <div id="langselect" class="px-2 px-md-0 my-4 my-md-0">
+          <button type="button" class="langbutton active my-1 p-1 border-0" onclick="setLanguage(0)">
+            EN
           </button>
-          <div class="collapse navbar-collapse justify-content-center-md" id="mynavbar">
-    
-            <ul class="navbar-nav me-auto mt-2 mt-md-0 text-uppercase ">
-              <li class="py-3 py-md-3 my-1 my-md-0 globalnav">
-                <a href="index.html">Emissons</a>
-              </li>
-              <li class="py-3 py-md-3 my-1 my-md-0 globalnav active">
-                <a href="climate-change.html">Climate Change</a>
-              </li>
-              <li class="py-3 py-md-3 my-1 my-md-0 globalnav">
-                <a href="green-energy.html">Clean Energy</a>
-              </li>
-            </ul>
-    
-            <form class="me-3 my-4 my-md-0 ms-2 ms-md-0">
-              <input class="globalsearch" type="text" placeholder="Search">
-            </form>
-            <div id="langselect" class="px-2 px-md-0 my-4 my-md-0">
-              <button type="button" class="langbutton active my-1 p-1 border-0" id="langEn" onclick="setLanguage(0)">
-                EN
-              </button>
-              <button type="button" class="langbutton my-1 p-1 border-0" id="langHe" onclick="setLanguage(1)">
-                HE
-              </button>
-            </div>
-          </div>
+          <button type="button" class="langbutton my-1 p-1 border-0" onclick="setLanguage(1)">
+            HE
+          </button>
         </div>
-      </nav>
-    <!-- Hero Image -->
-    <div class="hero-image container-fluid">
-        <div class="hero-text">
-            <h1 class="text-uppercase display-4 py-5" style="font-weight: 800">Climate Change</h1>
-        </div>
+      </div>
     </div>
+  </nav>
 
+  <!-- Text -->
 
-    <!-- Text -->
+  <div style="min-height: 50%; clear:both;" class="pt-5">
+    <div class="container-fluid pb-5" style="max-width: 1136px; margin: auto;">
 
-    <div style="min-height: 50%; clear:both;" class="pt-5">
-        <div class="container-fluid pb-5" style="max-width: 1136px; margin: auto;">
+      <section>
+        <p>Climate change refers to long-term shifts in temperature, precipitation patterns, sea levels, and
+          other indicators of Earth's climate system. These changes are primarily driven by human activities,
+          particularly the emission of greenhouse gases such as carbon dioxide (CO2), methane (CH4), and
+          nitrous oxide (N2O) into the atmosphere. The main sources of these emissions include burning fossil
+          fuels for energy, deforestation, industrial processes, agriculture, and land-use changes.
 
-            <section>
-                <p>Climate change refers to long-term shifts in temperature, precipitation patterns, sea levels, and
-                    other indicators of Earth's climate system. These changes are primarily driven by human activities,
-                    particularly the emission of greenhouse gases such as carbon dioxide (CO2), methane (CH4), and
-                    nitrous oxide (N2O) into the atmosphere. The main sources of these emissions include burning fossil
-                    fuels for energy, deforestation, industrial processes, agriculture, and land-use changes.
+        </p>
+      </section>
+      <section>
+        <p> The consequences of climate change are far-reaching and include:</p>
+        <div class="row text-grey">
 
-                </p>
-            </section>
-            <section>
-                <p> The consequences of climate change are far-reaching and include:</p>
-                <div class="row text-grey">
+          <div class="col-12 col-md-4 py-4">
+            <div class="infobox-header">Rising temperatures:</div>Global average temperatures have been
+            steadil increasing, leading to heatwaves, melting glaciers and ice caps, and changes in weather patterns.
+            This can result in
+            more frequent and severe weather events such as hurricanes, droughts, and wildfires.
+          </div>
 
-                    <div class="col-12 col-md-4 py-4">
-                        <div class="infobox-header">Rising temperatures:</div>Global average temperatures have been
-                        steadily
-                        increasing, leading to
-                        heatwaves, melting glaciers and ice caps, and changes in weather patterns. This can result in
-                        more
-                        frequent and severe weather events such as hurricanes, droughts, and wildfires.
-                    </div>
+          <div class="col-12 col-md-4 py-4">
+            <div class="infobox-header">Sea level rise:</div>As the planet warms, polar ice caps and
+            glaciers melt, contributing to rising sea levels. This poses a significant threat to coastal communities,
+            ecosystems, and infrastructure,
+            increasing the risk of flooding and erosion.
+          </div>
 
-                    <div class="col-12 col-md-4 py-4">
-                        <div class="infobox-header">Sea level rise:</div>As the planet warms, polar ice caps and
-                        glaciers melt,
-                        contributing to rising sea
-                        levels. This poses a significant threat to coastal communities, ecosystems, and infrastructure,
-                        increasing the risk of flooding and erosion.
-                    </div>
+          <div class="col-12 col-md-4 py-4">
+            <div class="infobox-header">in precipitation patterns:</div>Climate change can alter regional
+            patterns of rainfall and snowfall, leading to droughts in some areas and increased precipitation in others.
+            This can
+            disrupt agricultural systems, water supplies, and ecosystems.
+          </div>
 
-                    <div class="col-12 col-md-4 py-4">
-                        <div class="infobox-header">in precipitation patterns:</div>Climate change can alter regional
-                        patterns of
-                        rainfall and
-                        snowfall, leading to droughts in some areas and increased precipitation in others. This can
-                        disrupt
-                        agricultural systems, water supplies, and ecosystems.
-                    </div>
+          <div class="col-12 col-md-4 py-4">
+            <div class="infobox-header">acidification:</div>The absorption of excess CO2 by the oceans leads
+            to acidification, which can harm marine life such as coral reefs, shellfish, and other organisms that rely
+            on calcium
+            carbonate to build their shells and skeletons.
+          </div>
 
-                    <div class="col-12 col-md-4 py-4">
-                        <div class="infobox-header">acidification:</div>The absorption of excess CO2 by the oceans leads
-                        to
-                        acidification, which can
-                        harm marine life such as coral reefs, shellfish, and other organisms that rely on calcium
-                        carbonate
-                        to build their shells and skeletons.
-                    </div>
+          <div class="col-12 col-md-4 py-4">
+            <div class="infobox-header">Loss of biodiversity:</div>Climate change exacerbates existing
+            threats to biodiversity by altering habitats, disrupting ecosystems, and increasing the risk of extinction
+            for many plant and animal
+            species.
+          </div>
 
-                    <div class="col-12 col-md-4 py-4">
-                        <div class="infobox-header">Loss of biodiversity:</div>Climate change exacerbates existing
-                        threats to
-                        biodiversity by altering
-                        habitats, disrupting ecosystems, and increasing the risk of extinction for many plant and animal
-                        species.
-                    </div>
-
-                    <div class="col-12 col-md-4 py-4">
-                        <div class="infobox-header">Impacts on human health:</div>Climate change can have direct and
-                        indirect
-                        effects on human health,
-                        including heat-related illnesses, respiratory problems from air pollution, the spread of
-                        vector-borne diseases, and food and water insecurity.
-                    </div>
-                </div>
-            </section>
-            <section>
-
-                <p class="pt-4">Addressing climate change requires global cooperation and concerted efforts to reduce greenhouse gas
-                    emissions, transition to renewable energy sources, increase energy efficiency, protect and restore
-                    ecosystems, and adapt to the changes already underway. Many countries have committed to taking
-                    action through international agreements such as the Paris Agreement, which aims to limit global
-                    warming to well below 2 degrees Celsius above pre-industrial levels and pursue efforts to limit it
-                    to 1.5 degrees Celsius.</p>
-
-            </section>
-
+          <div class="col-12 col-md-4 py-4">
+            <div class="infobox-header">Impacts on human health:</div>Climate change can have direct and
+            indirect effects on human health, including heat-related illnesses, respiratory problems from air pollution,
+            the spread of
+            vector-borne diseases, and food and water insecurity.
+          </div>
         </div>
+      </section>
+      <section>
+
+        <p class="pt-4">Addressing climate change requires global cooperation and concerted efforts to reduce greenhouse
+          gas emissions, transition to renewable energy sources, increase energy efficiency, protect and restore
+          ecosystems, and adapt to the changes already underway. Many countries have committed to taking
+          action through international agreements such as the Paris Agreement, which aims to limit global
+          warming to well below 2 degrees Celsius above pre-industrial levels and pursue efforts to limit it
+          to 1.5 degrees Celsius.</p>
+
+      </section>
+
     </div>
+  </div>
 
-    <!-- Footer Navigation -->
-    <div class="container-fluid py-5" style="max-width: 1136px;">
-        <div class="row">
-          <div class="col-12 col-md-8">
-            <nav class="navbar navbar-expand-md">
-    
-              <ul class="navbar-nav text-uppercase me-auto">
-                <li class="footernav">
-                  <a href="imprint.html">Imprint</a>
-                </li>
-                <li class="footernav ">
-                  <a href="privacy.html">Privacy</a>
-                </li>
-                <li class="footernav">
-                  <a href="#">About Us</a>
-                </li>
-                <li class="footernav">
-                  <a href="#">Support our Work</a>
-                </li>
-              </ul>
-    
-            </nav>
-          </div>
-          <div class="col-12 col-md-4">
-            <div class="float-md-end me-2">
-              <p class="mb-1">Copyright by CEW 2024.</p>
-              <p class="mb-1">Photos by Oliver Hartmann</p>
-            </div>
-            <div>
-            </div>
-          </div>
+  <!-- Footer Navigation -->
+  <div class="container-fluid py-5" style="max-width: 1136px;">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <nav class="navbar navbar-expand-md">
 
-            <script type="text/javascript" src="language.js"> </script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+          <ul class="navbar-nav text-uppercase me-auto">
+            <li class="footernav">
+              <a href="imprint.html">Imprint</a>
+            </li>
+            <li class="footernav ">
+              <a href="privacy.html">Privacy</a>
+            </li>
+            <li class="footernav">
+              <a href="#">About Us</a>
+            </li>
+            <li class="footernav">
+              <a href="#">Support our Work</a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="float-md-end me-2">
+          <p class="mb-1">Copyright by CEW 2024.</p>
+          <p class="mb-1">Photos by Oliver Hartmann</p>
+        </div>
+        <div>
+        </div>
+      </div>
+
+      <script type="text/javascript" src="language.js"> </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
 </body>

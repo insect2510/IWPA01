@@ -1,15 +1,14 @@
 /* Farbvariablen deklarieren*/
 :root {
-
   --backgroundcolor: #222222;
   --buttonbackgroundcolor: #333333;
   --textcolor: #aaaaaa;
   --accentwhite: #fefefe;
   --inputtextcolor: #111111;
   --accentblue: #078daa;
-  --footerbackgroundcolor: #111111;
 }
 
+/* Höhe und Hintergrundfarbe der Website festlegen*/
 body,
 html {
   height: 100%;
@@ -17,11 +16,7 @@ html {
   overflow-anchor: none;
 }
 
-nav {
-
-  background-color: var(--backgroundcolor);
-}
-
+/* Inputfeld globale Suche und Filter*/
 input {
   background-color: var(--accentwhite);
   color: var(--backgroundcolor) !important;
@@ -42,6 +37,8 @@ input[type=text]:focus {
   opacity: 1;
 }
 
+
+/* Breite des Inputfeldes der globalen Suche festlegen*/
 @media only screen and (min-width: 768px) {
   .globalsearch {
     max-width: 11.5rem;
@@ -54,15 +51,14 @@ input[type=text]:focus {
   }
 }
 
-/* The hero image */
+
+/* Hero Image */
 .hero-image {
-  /* Use "linear-gradient" to add a darken background effect to the image. This will make the text easier to read */
+  /* Referenz zur Bilddatei + abdunklen des Bildes */
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url("img/carbon-hero.jpg");
-
-  /* Set a specific height */
+  /* Höhe fest definieren*/
   height: 250px;
-
-  /* Position and center the image to scale nicely on all screens */
+  /* Position des Hero Bildes*/
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -70,7 +66,7 @@ input[type=text]:focus {
   margin-top: 80px
 }
 
-/* Place text in the middle of the image */
+/* Hero Text centriert über dem Hero Bild */
 .hero-text {
   text-align: center;
   position: absolute;
@@ -80,15 +76,15 @@ input[type=text]:focus {
 
 }
 
+/* Überschrift h1 definieren - Hero Text*/
 h1 {
   color: var(--accentwhite);
   text-decoration: none;
   font-size: 4rem;
   font-weight: 800;
-
-
 }
 
+/* Überschrift h2 definieren - Seitentitel*/
 h2 {
   color: var(--accentwhite);
   text-decoration: none;
@@ -99,6 +95,7 @@ h2 {
   font-weight: 800;
 }
 
+/* Überschrift h3 definieren - Abschnittsüberschrift*/
 h3 {
   color: var(--textcolor);
   text-decoration: none;
@@ -108,10 +105,10 @@ h3 {
   font-weight: 400;
 }
 
+/* allgemeiner Text und Links*/
 p {
   color: var(--textcolor);
   text-decoration: none;
-
 }
 
 p a {
@@ -128,9 +125,11 @@ p a:hover {
   background-color: #555555;
 }
 
+/* Klassen für Textgröße für Tabelleninhalt*/
 .tabltext {
-  font-size: 15px;
+  font-size: 16px;
 }
+
 @media only screen and (max-width: 375px) {
   .tabletext {
     font-size: 15px;
@@ -142,135 +141,111 @@ ul {
   color: var(--textcolor);
 }
 
-.text-grey {
+
+/* Hintergrundfarbe der Naviagtion festlegen*/
+nav {
+  background-color: var(--backgroundcolor);
+}
+
+/* Klassen für globale Navigation*/
+.globalnav a {
+  background-color: var(--backgroundcolor);
   color: var(--textcolor);
+  text-decoration: none;
+  padding: 0.5rem;
   text-decoration: none;
 }
 
-.infobox-header {
-  font-size: 1.5rem;
-  padding-bottom: 1.5rem;
-  font-weight: bold;
-  text-transform: uppercase;
+.globalnav a:hover {
+  background-color: var(--accentwhite);
+  color: var(--backgroundcolor);
 }
 
-button {
-  background-color: #333333;
-  color: #cccccc;
+.globalnav.active a {
+  background-color: var(--backgroundcolor);
+  color: var(--accentwhite);
+  text-decoration: underline;
+}
+
+.globalnav.active a:hover {
+  background-color: var(--accentwhite);
+  color: var(--backgroundcolor);
+
+}
+
+/* Klassen für Haupt-Navigation */
+.main-nav {
+  background-color: var(--backgroundcolor);
+  color: var(--accentwhite);
   text-decoration: none;
   border: 0;
   padding: 16px 16px;
   margin: 0px;
 }
 
-button:hover {
-  background-color: var(--accentcolor);
-  color: #000000;
-}
-
-button.active {
-  background-color: #555555;
-  color: #ffffff;
-}
-
-
-.main-nav {
-  background-color: var(--backgroundcolor);
-  color: #cccccc;
-}
-
 .main-nav:hover {
   background-color: var(--accentwhite);
-
+  color: var(--backgroundcolor);
 }
 
 .main-nav.active {
-
   background-color: var(--accentblue);
   color: var(--accentwhite);
 }
 
+/* Klassen für Buttons für Filterkriterium*/
 .filterbutton {
   background-color: var(--buttonbackgroundcolor);
   color: var(--accentwhite);
   border: 1px solid var(--accentblue);
   width: 50%;
 }
+
 .filterbutton:hover {
   background-color: var(--accentwhite);
+  color: var(--buttonbackgroundcolor);
 }
+
 .filterbutton.active {
   background-color: var(--accentblue);
   color: var(--accentwhite);
 }
 
+/* Klassen für Buttons für Umstellung der Sprache*/
 .langbutton {
   background-color: var(--backgroundcolor);
   color: var(--textcolor);
   padding: 0.5rem !important;
-
 }
 
 .langbutton:hover {
   background-color: var(--accentwhite);
   color: var(--backgroundcolor);
-
 }
 
 .langbutton.active {
-
   background-color: var(--backgroundcolor);
   color: var(--accentwhite);
-
+  text-decoration: underline;
 }
 
+/* Klassen für Buttons für Sortierung der Tabelle*/
 .sortbutton {
   background-color: transparent;
   color: var(--accentwhite);
-
 }
 
 .sortbutton:hover {
   background-color: var(--accentwhite);
   color: var(--backgroundcolor);
-
 }
 
 .sortbutton.active {
-
   background-color: var(--accentblue);
   color: var(--accentwhite);
-
 }
 
-.globalnav a {
-  background-color: var(--backgroundcolor);
-  color: var(--textcolor);
-  text-decoration: none;
-  padding: 0.5rem;
-
-}
-
-.globalnav a:hover {
-  background-color: var(--accentwhite);
-  color: var(--backgroundcolor);
-
-}
-
-.globalnav.active a {
-
-  background-color: var(--backgroundcolor);
-  color: var(--accentwhite);
-
-}
-
-.globalnav.active a:hover {
-
-  background-color: var(--accentwhite);
-  color: var(--backgroundcolor);
-
-}
-
+/* Anpassung Hamburger Icon*/
 .navbar-toggler-icon {
   font-size: 0.8rem;
 
@@ -283,7 +258,6 @@ button.active {
 
 .navbar-toggler {
   background-color: var(--accentwhite);
-
   border-radius: 0px;
   padding: 0.25rem;
 
@@ -295,12 +269,9 @@ button.active {
   padding: 0.25rem;
 }
 
-.footer {
-  background-color: var(--footerbackgroundcolor);
-}
 
+/* Klassen für Footer Elemente*/
 .footernav {
-
   padding: 0rem 2rem 0rem 0rem;
   margin-bottom: 2rem !important;
 }
@@ -309,11 +280,21 @@ button.active {
 
   color: var(--textcolor);
   text-decoration: none;
-
-
 }
 
 .footernav a:hover {
   color: var(--accentwhite);
+}
 
+/* Klassen für Schrift für Unterseiten*/
+.text-grey {
+  color: var(--textcolor);
+  text-decoration: none;
+}
+
+.infobox-header {
+  font-size: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }

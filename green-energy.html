@@ -2,165 +2,159 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Energy</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link href=" https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css " rel="stylesheet">
-    <link rel="stylesheet" href="carbon.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Energy</title>
+  <link rel="icon" type="image/x-icon" href="img/favicon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link href=" https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css " rel="stylesheet">
+  <link rel="stylesheet" href="carbon.css">
 </head>
 
-<body class="">
-    <!-- Header Menü -->
-    <nav class="navbar navbar-expand-md py-3 fixed-top">
-        <div class="container-fluid" style="max-width: 1136px;">
-          <a class="navbar-brand" href="index.html"><img src="img/carbon-logo2.png" style="width:40px"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-            <span class="navbar-toggler-icon"></span>
+<body>
+  <!-- Globale Navigation-->
+  <nav class="navbar navbar-expand-md py-3 fixed-top">
+    <div class="container-fluid" style="max-width: 1136px;">
+      <a class="navbar-brand" href="index.html"><img src="img/carbon-logo2.png" style="width:40px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center-md" id="mynavbar">
+        <ul class="navbar-nav me-auto mt-2 mt-md-0 text-uppercase ">
+          <li class="py-3 py-md-3 my-1 my-md-0 globalnav active">
+            <a href="index.html">Emissons</a>
+          </li>
+          <li class="py-3 py-md-3 my-1 my-md-0 globalnav">
+            <a href="climate-change.html">Climate Change</a>
+          </li>
+          <li class="py-3 py-md-3 my-1 my-md-0 globalnav">
+            <a href="green-energy.html">Clean Energy</a>
+          </li>
+        </ul>
+        <!-- Globale Suche -->
+        <form class="me-3 my-4 my-md-0 ms-2 ms-md-0">
+          <input class="globalsearch" type="text" placeholder="Search">
+        </form>
+        <!-- Sprachwahl -->
+        <div id="langselect" class="px-2 px-md-0 my-4 my-md-0">
+          <button type="button" class="langbutton active my-1 p-1 border-0" onclick="setLanguage(0)">
+            EN
           </button>
-          <div class="collapse navbar-collapse justify-content-center-md" id="mynavbar">
-    
-            <ul class="navbar-nav me-auto mt-2 mt-md-0 text-uppercase ">
-              <li class="py-3 py-md-3 my-1 my-md-0 globalnav">
-                <a href="index.html">Emissons</a>
-              </li>
-              <li class="py-3 py-md-3 my-1 my-md-0 globalnav">
-                <a href="climate-change.html">Climate Change</a>
-              </li>
-              <li class="py-3 py-md-3 my-1 my-md-0 globalnav active">
-                <a href="green-energy.html">Clean Energy</a>
-              </li>
-            </ul>
-    
-            <form class="me-3 my-4 my-md-0 ms-2 ms-md-0">
-              <input class="globalsearch" type="text" placeholder="Search">
-            </form>
-            <div id="langselect" class="px-2 px-md-0 my-4 my-md-0">
-              <button type="button" class="langbutton active my-1 p-1 border-0" id="langEn" onclick="setLanguage(0)">
-                EN
-              </button>
-              <button type="button" class="langbutton my-1 p-1 border-0" id="langHe" onclick="setLanguage(1)">
-                HE
-              </button>
-            </div>
-          </div>
+          <button type="button" class="langbutton my-1 p-1 border-0" onclick="setLanguage(1)">
+            HE
+          </button>
         </div>
-      </nav>
-    <!-- Hero Image -->
-    <div class="hero-image container-fluid">
-        <div class="hero-text">
-            <h1 class="text-uppercase display-4 py-5" style="font-weight: 800">Green Energy</h1>
-        </div>
+      </div>
     </div>
+  </nav>
 
 
-    <!-- Text -->
+  <!-- Text -->
 
-    <div style="min-height: 50%; clear:both;" class="pt-5">
-        <div class="container-fluid pb-5" style="max-width: 1136px; margin: auto;">
+  <div style="min-height: 50%; clear:both;" class="pt-5">
+    <div class="container-fluid pb-5" style="max-width: 1136px; margin: auto;">
 
-            <section>
-                <p>Green energy, also known as renewable energy, refers to energy derived from natural resources that
-                    are replenished on a human timescale and are environmentally sustainable. Unlike fossil fuels, which
-                    are finite and contribute to pollution and climate change, green energy sources produce little to no
-                    greenhouse gas emissions during energy generation.
+      <section>
+        <p>Green energy, also known as renewable energy, refers to energy derived from natural resources that
+          are replenished on a human timescale and are environmentally sustainable. Unlike fossil fuels, which
+          are finite and contribute to pollution and climate change, green energy sources produce little to no
+          greenhouse gas emissions during energy generation.
 
 
 
-                </p>
-            </section>
-            <section>
-                <p>Some common sources of green energy include:</p>
-                <div class="row text-grey">
+        </p>
+      </section>
+      <section>
+        <p>Some common sources of green energy include:</p>
+        <div class="row text-grey">
 
-                    <div class="col-12 col-md-4 py-4">
-                        <div class="infobox-header">Solar Energy:</div>Solar power harnesses energy from the sun using
-                        photovoltaic cells or solar panels. Solar energy is abundant, clean, and renewable. It can be
-                        used for both residential and commercial purposes.
-                    </div>
+          <div class="col-12 col-md-4 py-4">
+            <div class="infobox-header">Solar Energy:</div>Solar power harnesses energy from the sun using
+            photovoltaic cells or solar panels. Solar energy is abundant, clean, and renewable. It can be
+            used for both residential and commercial purposes.
+          </div>
 
-                    <div class="col-12 col-md-4 py-4">
-                        <div class="infobox-header">Wind Energy:</div>Wind turbines capture the kinetic energy from the
-                        wind and convert it into electricity. Wind energy is one of the fastest-growing sources of
-                        renewable energy globally and has minimal environmental impact compared to fossil fuels.
-                    </div>
+          <div class="col-12 col-md-4 py-4">
+            <div class="infobox-header">Wind Energy:</div>Wind turbines capture the kinetic energy from the
+            wind and convert it into electricity. Wind energy is one of the fastest-growing sources of
+            renewable energy globally and has minimal environmental impact compared to fossil fuels.
+          </div>
 
-                    <div class="col-12 col-md-4 py-4">
-                        <div class="infobox-header">Hydropower:</div>Hydropower utilizes the energy of flowing water,
-                        typically from rivers or dams, to generate electricity. It is a mature technology and has been
-                        used for centuries. Large-scale hydropower projects can provide significant amounts of
-                        electricity with minimal greenhouse gas emissions.
-                    </div>
+          <div class="col-12 col-md-4 py-4">
+            <div class="infobox-header">Hydropower:</div>Hydropower utilizes the energy of flowing water,
+            typically from rivers or dams, to generate electricity. It is a mature technology and has been
+            used for centuries. Large-scale hydropower projects can provide significant amounts of
+            electricity with minimal greenhouse gas emissions.
+          </div>
 
-                    <div class="col-12 col-md-4 py-4">
-                        <div class="infobox-header">Biomass Energy:</div>TBiomass energy involves using organic
-                        materials such as wood, agricultural residues, or waste to produce heat, electricity, or fuel.
-                        Biomass can be burned directly or converted into biofuels like ethanol and biodiesel.
-                    </div>
+          <div class="col-12 col-md-4 py-4">
+            <div class="infobox-header">Biomass Energy:</div>TBiomass energy involves using organic
+            materials such as wood, agricultural residues, or waste to produce heat, electricity, or fuel.
+            Biomass can be burned directly or converted into biofuels like ethanol and biodiesel.
+          </div>
 
-                    <div class="col-12 col-md-4 py-4">
-                        <div class="infobox-header">Geothermal Energy:</div>CGeothermal energy harnesses heat from
-                        beneath the Earth's surface to generate electricity or provide heating and cooling for
-                        buildings. It is a reliable and continuous source of renewable energy, particularly in areas
-                        with high geothermal activity.
-                    </div>
+          <div class="col-12 col-md-4 py-4">
+            <div class="infobox-header">Geothermal Energy:</div>CGeothermal energy harnesses heat from
+            beneath the Earth's surface to generate electricity or provide heating and cooling for
+            buildings. It is a reliable and continuous source of renewable energy, particularly in areas
+            with high geothermal activity.
+          </div>
 
-                    <div class="col-12 col-md-4 py-4">
-                        <div class="infobox-header">Tidal Energy:</div>Tidal energy captures the kinetic energy of ocean
-                        tides to generate electricity. It is a predictable and reliable source of renewable energy but
-                        is currently less common than other forms of green energy due to technological and environmental
-                        challenges.
-                    </div>
-                </div>
-            </section>
-            <section>
-
-                <p class="pt-4">The adoption of green energy is essential for mitigating climate change, reducing
-                    dependence on fossil fuels, and achieving sustainability goals. Governments, businesses, and
-                    individuals worldwide are increasingly investing in and transitioning to green energy technologies
-                    to create a cleaner and more sustainable future.</p>
-
-            </section>
-
+          <div class="col-12 col-md-4 py-4">
+            <div class="infobox-header">Tidal Energy:</div>Tidal energy captures the kinetic energy of ocean
+            tides to generate electricity. It is a predictable and reliable source of renewable energy but
+            is currently less common than other forms of green energy due to technological and environmental
+            challenges.
+          </div>
         </div>
+      </section>
+      <section>
+
+        <p class="pt-4">The adoption of green energy is essential for mitigating climate change, reducing
+          dependence on fossil fuels, and achieving sustainability goals. Governments, businesses, and
+          individuals worldwide are increasingly investing in and transitioning to green energy technologies
+          to create a cleaner and more sustainable future.</p>
+
+      </section>
+
     </div>
+  </div>
 
-    <!-- Footer Navigation -->
-    <div class="container-fluid py-5" style="max-width: 1136px;">
-        <div class="row">
-          <div class="col-12 col-md-8">
-            <nav class="navbar navbar-expand-md">
-    
-              <ul class="navbar-nav text-uppercase me-auto">
-                <li class="footernav">
-                  <a href="imprint.html">Imprint</a>
-                </li>
-                <li class="footernav ">
-                  <a href="privacy.html">Privacy</a>
-                </li>
-                <li class="footernav">
-                  <a href="#">About Us</a>
-                </li>
-                <li class="footernav">
-                  <a href="#">Support our Work</a>
-                </li>
-              </ul>
-    
-            </nav>
-          </div>
-          <div class="col-12 col-md-4">
-            <div class="float-md-end me-2">
-              <p class="mb-1">Copyright by CEW 2024.</p>
-              <p class="mb-1">Photos by Oliver Hartmann</p>
-            </div>
-            <div>
-            </div>
-          </div>
+  <!-- Footer Navigation -->
+  <div class="container-fluid py-5" style="max-width: 1136px;">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <nav class="navbar navbar-expand-md">
 
-            <script type="text/javascript" src="language.js"> </script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+          <ul class="navbar-nav text-uppercase me-auto">
+            <li class="footernav">
+              <a href="imprint.html">Imprint</a>
+            </li>
+            <li class="footernav ">
+              <a href="privacy.html">Privacy</a>
+            </li>
+            <li class="footernav">
+              <a href="#">About Us</a>
+            </li>
+            <li class="footernav">
+              <a href="#">Support our Work</a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="float-md-end me-2">
+          <p class="mb-1">Copyright by CEW 2024.</p>
+          <p class="mb-1">Photos by Oliver Hartmann</p>
+        </div>
+        <div>
+        </div>
+      </div>
+
+      <script type="text/javascript" src="language.js"> </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
 </body>

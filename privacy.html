@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="carbon.css">
 </head>
 
-<body class="">
-    <!-- Header Menü -->
+<body>
+    <!-- Globale Navigation-->
     <nav class="navbar navbar-expand-md py-3 fixed-top">
         <div class="container-fluid" style="max-width: 1136px;">
             <a class="navbar-brand" href="index.html"><img src="img/carbon-logo2.png" style="width:40px"></a>
@@ -20,9 +20,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-center-md" id="mynavbar">
-
                 <ul class="navbar-nav me-auto mt-2 mt-md-0 text-uppercase ">
-                    <li class="py-3 py-md-3 my-1 my-md-0 globalnav">
+                    <li class="py-3 py-md-3 my-1 my-md-0 globalnav active">
                         <a href="index.html">Emissons</a>
                     </li>
                     <li class="py-3 py-md-3 my-1 my-md-0 globalnav">
@@ -32,23 +31,22 @@
                         <a href="green-energy.html">Clean Energy</a>
                     </li>
                 </ul>
-
+                <!-- Globale Suche -->
                 <form class="me-3 my-4 my-md-0 ms-2 ms-md-0">
                     <input class="globalsearch" type="text" placeholder="Search">
                 </form>
+                <!-- Sprachwahl -->
                 <div id="langselect" class="px-2 px-md-0 my-4 my-md-0">
-                    <button type="button" class="langbutton active my-1 p-1 border-0" id="langEn"
-                        onclick="setLanguage(0)">
+                    <button type="button" class="langbutton active my-1 p-1 border-0" onclick="setLanguage(0)">
                         EN
                     </button>
-                    <button type="button" class="langbutton my-1 p-1 border-0" id="langHe" onclick="setLanguage(1)">
+                    <button type="button" class="langbutton my-1 p-1 border-0" onclick="setLanguage(1)">
                         HE
                     </button>
                 </div>
             </div>
         </div>
     </nav>
-
 
     <!-- Text -->
 

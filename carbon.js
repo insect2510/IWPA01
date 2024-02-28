@@ -74,7 +74,7 @@ function isEmissionNumber(myArr) {
 // HTML für Tabellenfilter erzeugen
 function writeHtmlFilterSearch() {
   // erzeugt HTML Suchfeld im Filter
-  htmlFilter = "<input style='' class='col-12 my-2' type='text' id='myFilterInput' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
+  htmlFilter = "<input class='col-12 my-2' type='text' id='myFilterInput' onkeyup='myFilter(" + column + ")' placeholder='Search for a " + searchFor + "' title='Type in a " + searchFor + "'>";
   document.getElementById("myFilterSearch").innerHTML = htmlFilter;
 }
 // erzeugt HTML für die Buttons des Filterkriteriums
