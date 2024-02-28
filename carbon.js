@@ -20,10 +20,10 @@ async function loadData() {
     myArr = await onlyText(myObj);
     // Funktion isEmissionNumber zur Prüfung ob Emission eine Zahl ist aufrufen
     emissionNotValid = isEmissionNumber(myArr);
-    // Wenn Emission keine Zahl ist, Hinweis ins DOM schreiben und Hauptnavigation ausblenden
+    // Wenn Emission keine Zahl ist, Hinweis ins DOM schreiben und mainnavi ausblenden
     if (emissionNotValid === 1) {
       document.getElementById("jsTableDom").innerHTML = "<p>Wrong data format. Please try again later.</p>";
-      document.getElementById("hauptnavigation").style.display = "none"
+      document.getElementById("mainnavi").style.display = "none"
       return
     }
     // Wenn Emission eine Zahl ist, Gesamtemission berechnen und HTML für Tabelle und Filter schreiben
@@ -36,10 +36,10 @@ async function loadData() {
       return myArr;
     }
   }
-  // Bei Auftreten eines Fehlers, Meldung in das DOM schreiben und Hauptnavigation ausblenden
+  // Bei Auftreten eines Fehlers, Meldung in das DOM schreiben und mainnavi ausblenden
   catch (error) {
     document.getElementById("jsTableDom").innerHTML = "<p class='text-grey'>Error loading data. Please try again later.</p>"
-    document.getElementById("hauptnavigation").style.display = "none"
+    document.getElementById("mainnavi").style.display = "none"
     return
   }
 }
@@ -284,7 +284,7 @@ function hasData(year) {
   }
 }
 function changeYear(year) {
-  yearBtn = document.getElementById("hauptnavigation");
+  yearBtn = document.getElementById("mainnavi");
   yearBtn = yearBtn.getElementsByTagName("button");
   yearBtn[preYear].classList.remove("active")
   yearBtn[year].classList.add("active")
