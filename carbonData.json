@@ -58,7 +58,18 @@
          "company": "Space X",
          "country": "USA",
          "emission": 111.111
+      },      
+      {
+         "company": "T-Systems",
+         "country": "Germany",
+         "emission": 12.34
       },
+      {
+         "company": "Wallmart",
+         "country": "USA",
+         "emission": 21.34
+      },
+      
       {
          "company": "Audi",
          "country": "Germany",

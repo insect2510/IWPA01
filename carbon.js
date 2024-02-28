@@ -120,6 +120,7 @@ function writeHtmlTable(myArr) {
   htmlTable += "<tr style='display: none'><td class='p-3'><em>No data found.</em></td><td class='p-3'> </td><td class='p-3'> </td><td class='p-3'> </td></tr>";
   // Tabelle schließen
   htmlTable += "</table>";
+  // HTML für Tabellenunterschrift erzeugen
   htmlTable += "<p id='measurement'>The value for carbon emission are measured in Gigatons. In 2023 we have tracked " + myArr.length + " companies with ";
   htmlTable += "a total emission of " + totalEmission + " Gigatons CO2.</p>";
 
@@ -129,31 +130,42 @@ function writeHtmlTable(myArr) {
 
 // Tabelle filter
 function myFilter(column) {
+  // Prüfen ob das gewählte Jahr Tabellendaten hat
   if (hasFilter) {
     var input, filter, table, tr, td, i, txtValue;
+    // Suchbegriff holen
     input = document.getElementById("myFilterInput");
     filter = input.value.toUpperCase();
+    // Referenz auf Tabelle holen
     table = document.getElementById("javaTable");
+    // Tabellenzeilen als Array übergeben
     tr = table.getElementsByTagName("tr");
+    // Anzahl der Tabellenzeilen mit Daten übergeben
     tableLenght = myArr.length;
-    
+    // Array der Tabellenzeilen durchlaufen
     for (i = 0; i < tr.length - 1; i++) {
       td = tr[i].getElementsByTagName("td")[column];
       if (td) {
         txtValue = td.textContent || td.innerText;
+        // Prüfen ob Suchbegriff im Zellentext enthalten ist
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          // Prüfung positiv: Zeile einblenden
           tr[i].style.display = "";
           tableLenght++;
         } else {
+          // Prüfung negativ: Zeile ausblenden
           tr[i].style.display = "none";
           tableLenght--;
         }
       }
     }
+    // Prüfen ob alle Zeilen ausgeblendet sind
     if (tableLenght == 0) {
+      // Prüfung positig: Zeile mit No Data Found einblenden
       tr[myArr.length + 1].style.display = "";
     }
     else {
+      // Prüfung negativ: Zeile mit No Data Found ausblenden
       tr[myArr.length + 1].style.display = "none";
     }
   }
@@ -161,7 +173,7 @@ function myFilter(column) {
 
 // Filter Buttons umschalten
 function changeFilterButton(filterButton) {
-
+  // Company Button auf active setzen
   if (filterButton == 0) {
     filterButtonId[0].classList.add("active")
     filterButtonId[1].classList.remove("active")
@@ -169,19 +181,21 @@ function changeFilterButton(filterButton) {
     column = 0;
   }
   else if (filterButton == 1) {
-
+    // Country Button auf active setzen
     filterButtonId[1].classList.add("active")
     filterButtonId[0].classList.remove("active")
     searchFor = tableHead[1];
     column = 1;
   }
+  // Filter Input Feld reseten
   writeHtmlFilterSearch();
+  // Filter reseten
   if (hasFilter) {
     writeHtmlTable(myArr);
   }
 }
 
-// Gesamt Emission aller company berechnen
+// Gesamt Emission aller companies berechnen
 function getTotalEmission() {
   for (x = 0; x < myArr.length; x++) {
     totalEmission = totalEmission + Number(myArr[x].emission);
@@ -261,24 +275,30 @@ function sortTable(column) {
 
 // hat Daten für das Jahr
 function hasData(year) {
+  // changeYear zur Setzung des activen Jahres in der mainnavi
   changeYear(year);
   var table, tr, td, i;
+  // Referenz auf die Tabelle und deren Zeilen holen
   table = document.getElementById("javaTable");
   tr = table.getElementsByTagName("tr");
+  // Wenn Daten für das Jahr verfügbar, alle Zeilen mit Daten einblenden
   if (dataAvailable[year]) {
     for (i = 1; i < tr.length - 1; i++) {
       tr[i].style.display = "";
     }
     tr[tr.length - 1].style.display = "none";
+    // Tabellenunterschrift einblenden
     document.getElementById("measurement").style.display = "";
     hasFilter = true;
     myFilter(column);
   }
+  // Wenn Daten für das Jahr nicht verfügbar, alle Zeilen mit Daten ausblenden
   else {
     for (i = 1; i < tr.length - 1; i++) {
       tr[i].style.display = "none";
     }
     tr[tr.length - 1].style.display = "";
+    // Tabellenunterschrift ausblenden
     document.getElementById("measurement").style.display = "none";
     hasFilter = false;
   }
