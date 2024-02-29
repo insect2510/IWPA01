@@ -1,8 +1,12 @@
-// Globale Variablen definieren
+// Globale Variablen initialisieren
+// Bootstrapklasse für das Icon zur Tabellensortierung
 let sortIcon = "bi bi-caret-up-fill";
+// Spaltenüberschriften der Tabelle und des Tabellenfilters
 let tableHead = ["Company", "Country", "Emission", "Ratio in %"], searchFor = tableHead[0];
-let htmlFilter, htmlTabletotalEmission, myArr, tableLenght, filterButtonId;
+
+let htmlFilter, myArr, tableLenght, filterButtonId;
 let iconStyleInit = "";
+// Initialisiserung der Sortierrichtung
 let dir = [1, 0, 0], column = 0, preColumn = 0, hasFilter = true, preYear = 0, preFilter = 0, totalEmission = 0;
 let errorHandle = 0;
 let dataAvailable = [1, 0, 0, 0];
