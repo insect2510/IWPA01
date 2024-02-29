@@ -37,7 +37,6 @@ input[type=text]:focus {
   opacity: 1;
 }
 
-
 /* Breite des Inputfeldes der globalen Suche festlegen*/
 @media only screen and (min-width: 768px) {
   .globalsearch {
