@@ -3,14 +3,17 @@
 let sortIcon = "bi bi-caret-up-fill";
 // Spaltenüberschriften der Tabelle und des Tabellenfilters
 let tableHead = ["Company", "Country", "Emission", "Ratio in %"], searchFor = tableHead[0];
-
-let htmlFilter, myArr, tableLenght, filterButtonId;
+// Variablen für HTML der Tabelle und Daten Array initialisieren
+let htmlFilter, htmlTable, myArr, tableLenght, filterButtonId;
 let iconStyleInit = "";
-// Initialisiserung der Sortierrichtung
+// Initialisiserung der Sortierrichtung, Spalten und Filter
 let dir = [1, 0, 0], column = 0, preColumn = 0, hasFilter = true, preYear = 0, preFilter = 0, totalEmission = 0;
+// Initialisierung des Errorhandlers
 let errorHandle = 0;
+// Arry für Jahre mit Daten
 let dataAvailable = [1, 0, 0, 0];
 
+// Start mit dem Laden der Daten für die Tabelle
 loadData();
 
 // JSON Daten für die Tabelle laden
